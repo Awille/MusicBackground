@@ -1,6 +1,6 @@
 package bean.songlist;
 
-public class SongListBasic {
+public class SongListBasicInfo {
     /**
      * 歌单ID
      */
