@@ -9,6 +9,8 @@ import java.sql.SQLException;
 public class DatabaseConnectManager {
     private static DatabaseConnectManager INSTANCE;
 
+    private static boolean isConnect = false;
+
     /**
      * 数据库连接
      */
@@ -38,6 +40,7 @@ public class DatabaseConnectManager {
     public boolean establishConnection() {
         try {
             databaseConnection = DriverManager.getConnection(connectUrl, CommonConstant.Database.userName, CommonConstant.Database.password);
+            isConnect = true;
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,6 +55,7 @@ public class DatabaseConnectManager {
     public boolean closeConnection() {
         try {
             databaseConnection.close();
+            isConnect = false;
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,6 +63,17 @@ public class DatabaseConnectManager {
         return false;
     }
 
+    /**
+     * 根据连接状态自动重连，若已经连接则忽略
+     * @return
+     */
+    public boolean autoConnect() {
+        if (isConnect) {
+            return true;
+        } else {
+            return establishConnection();
+        }
+    }
 
 
 
