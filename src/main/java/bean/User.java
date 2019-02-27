@@ -6,6 +6,10 @@ public class User {
      */
     private long userId;
     /**
+     * 用户账户
+     */
+    private String account;
+    /**
      * 昵称
      */
     private String nickName;
@@ -29,6 +33,14 @@ public class User {
      * 用户密码
      */
     private String password;
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
 
     public long getUserId() {
         return userId;
