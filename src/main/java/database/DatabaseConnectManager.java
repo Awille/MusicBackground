@@ -75,6 +75,10 @@ public class DatabaseConnectManager {
         }
     }
 
+    public Connection getDatabaseConnection() {
+        return databaseConnection;
+    }
+
 
 
 
