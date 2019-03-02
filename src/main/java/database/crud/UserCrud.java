@@ -186,4 +186,35 @@ public class UserCrud {
         }
         return user;
     }
+
+    /**
+     * 删除用户
+     * @param account
+     * @return 用户删除结果
+     */
+    public static boolean deleteUser(String account) {
+        if (TextUtils.isEmpty(account)) {
+            return false;
+        }
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+                    "DELETE FROM music.user where account = ?");
+            preparedStatement.setString(1, account);
+            if (preparedStatement.executeUpdate() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
 }
