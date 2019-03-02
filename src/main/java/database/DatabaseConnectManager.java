@@ -9,7 +9,6 @@ import java.sql.SQLException;
 public class DatabaseConnectManager {
     private static DatabaseConnectManager INSTANCE;
 
-    private static boolean isConnect = false;
 
     /**
      * 数据库连接
@@ -17,9 +16,9 @@ public class DatabaseConnectManager {
     private static Connection databaseConnection;
 
     private static String connectUrl = "jdbc:mysql://" +
-            CommonConstant.Database.host + ":" + CommonConstant.Database.port
+            CommonConstant.Database.host + ":" + CommonConstant.Database.port + "/"
             + CommonConstant.Database.databaseName
-            + "?autoReconnect=true&useUnicode=true"
+            + "?useUnicode=true&serverTimezone=UTC"
             + "&characterEncoding=UTF-8&useSSL=false";
 
     public static DatabaseConnectManager getInstance() {
@@ -39,8 +38,8 @@ public class DatabaseConnectManager {
      */
     public boolean establishConnection() {
         try {
+            System.out.println(connectUrl);
             databaseConnection = DriverManager.getConnection(connectUrl, CommonConstant.Database.userName, CommonConstant.Database.password);
-            isConnect = true;
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,7 +54,6 @@ public class DatabaseConnectManager {
     public boolean closeConnection() {
         try {
             databaseConnection.close();
-            isConnect = false;
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,17 +61,6 @@ public class DatabaseConnectManager {
         return false;
     }
 
-    /**
-     * 根据连接状态自动重连，若已经连接则忽略
-     * @return
-     */
-    public boolean autoConnect() {
-        if (isConnect) {
-            return true;
-        } else {
-            return establishConnection();
-        }
-    }
 
     public Connection getDatabaseConnection() {
         return databaseConnection;
