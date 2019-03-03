@@ -124,4 +124,40 @@ public class SongListCrud {
             return null;
         }
     }
+
+    /**
+     * 得到用户的歌单信息
+     * @param userId
+     * @return 得到用户的歌单信息
+     */
+    public static List<SongList> getSongListsByUserId(long userId) {
+        List<SongList> songLists = new ArrayList<SongList>();
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+                    "SELECT * FROM music.songlist WHERE user_id = ?");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                SongList songList = new SongList();
+                SongListBasicInfo songListBasicInfo = new SongListBasicInfo();
+                songListBasicInfo.setName(resultSet.getString("name"));
+                songListBasicInfo.setAvatarUrl(resultSet.getString("avatar_url"));
+                songListBasicInfo.setUserId(resultSet.getLong("user_id"));
+                songListBasicInfo.setSongListId(resultSet.getLong("song_list_id"));
+                songList.setBasicInfo(songListBasicInfo);
+                songLists.add(songList);
+            }
+            resultSet.close();
+            return songLists;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
 }
