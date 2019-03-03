@@ -31,7 +31,7 @@ public class SongCrud {
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
                 //补充主键信息
                 if (resultSet.next()) {
-                    song.setSongId(resultSet.getLong(1));
+                    song.setSongId(resultSet.getLong("song_id"));
                 }
                 return song;
             } else {

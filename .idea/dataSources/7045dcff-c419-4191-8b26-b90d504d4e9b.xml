@@ -1101,7 +1101,7 @@
       <RefTableName>user</RefTableName>
       <RefColNames>user_id</RefColNames>
     </foreign-key>
-    <column id="270" parent="245" name="user_id">
+    <column id="270" parent="245" name="song_list_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
@@ -1114,7 +1114,7 @@
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="272" parent="245" name="relation">
-      <ColNames>user_id
+      <ColNames>song_list_id
 song_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
@@ -1124,15 +1124,15 @@ song_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="274" parent="245" name="relation">
-      <ColNames>user_id
+      <ColNames>song_list_id
 song_id</ColNames>
       <UnderlyingIndexName>relation</UnderlyingIndexName>
     </key>
-    <foreign-key id="275" parent="245" name="user">
-      <ColNames>user_id</ColNames>
+    <foreign-key id="275" parent="245" name="userlist">
+      <ColNames>song_list_id</ColNames>
       <RefSchemaName>music</RefSchemaName>
-      <RefTableName>user</RefTableName>
-      <RefColNames>user_id</RefColNames>
+      <RefTableName>songlist</RefTableName>
+      <RefColNames>song_list_id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
@@ -1198,13 +1198,17 @@ song_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="286" parent="246" name="PRIMARY">
+    <index id="286" parent="246" name="user_id">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="287" parent="246" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id
 account</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="287" parent="246" name="account_index">
+    <key id="288" parent="246" name="account_index">
       <ColNames>account</ColNames>
       <UnderlyingIndexName>account_index</UnderlyingIndexName>
     </key>
