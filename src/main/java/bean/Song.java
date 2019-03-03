@@ -12,7 +12,7 @@ public class Song {
     /**
      * 所属专辑名称
      */
-    private String ulbumName;
+    private String albumName;
     /**
      * 歌手
      */
@@ -38,12 +38,12 @@ public class Song {
         this.lyricUrl = lyricUrl;
     }
 
-    public String getUlbumName() {
-        return ulbumName;
+    public String getAlbumName() {
+        return albumName;
     }
 
-    public void setUlbumName(String ulbumName) {
-        this.ulbumName = ulbumName;
+    public void setAlbumName(String albumName) {
+        this.albumName = albumName;
     }
 
     public String getSinger() {

@@ -14,6 +14,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserCrud {
+    /**
+     * 增加用户
+     * @param user
+     * @return 增加的用户实例
+     */
     public static User addUser(User user) {
         if (user != null && !TextUtils.isEmpty(user.getAccount()) && !TextUtils.isEmpty(user.getPassword()) && !TextUtils.isEmpty(user.getNickName())) {
             PreparedStatement preparedStatement = null;
@@ -29,6 +34,10 @@ public class UserCrud {
                 preparedStatement.setString(6, user.getSignature());
                 preparedStatement.setString(7, user.getAvatarUrl());
                 if (preparedStatement.executeUpdate() > 0) {
+                    ResultSet resultSet = preparedStatement.getGeneratedKeys();
+                    if (resultSet.next()) {
+                        user.setUserId(resultSet.getLong(1));
+                    }
                     return user;
                 } else {
                     return null;
@@ -166,6 +175,7 @@ public class UserCrud {
             preparedStatement.setString(1, account);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+                user = new User();
                 user.setNickName(resultSet.getString("nick_name"));
                 user.setGender(resultSet.getInt("gender"));
                 user.setBirth(resultSet.getString("birth"));
@@ -174,7 +184,6 @@ public class UserCrud {
                 user.setAccount(resultSet.getString("account"));
             }
             resultSet.close();
-            return user;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
