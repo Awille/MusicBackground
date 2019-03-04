@@ -54,6 +54,11 @@ public class CommentCrud {
         return null;
     }
 
+    /**
+     * 更新评论数量
+     * @param replyCommentId 回复评论ID
+     * @return 是否更新成功
+     */
     private static boolean updateReplyAmount(long replyCommentId) {
         PreparedStatement preparedStatement = null;
         try {
@@ -78,7 +83,12 @@ public class CommentCrud {
         return false;
     }
 
-    private static List<Comment> queryTopCommentsBySongId(long songId) {
+    /**
+     * 获得顶级评论
+     * @param songId 歌曲ID
+     * @return 评论列表
+     */
+    public static List<Comment> queryTopCommentsBySongId(long songId) {
         List<Comment> comments = new ArrayList<Comment>();
         PreparedStatement preparedStatement = null;
         try {
@@ -112,6 +122,119 @@ public class CommentCrud {
             }
         }
         return comments;
+    }
+
+    /**
+     * 根据评论ID 查询评论
+     * @param commentId
+     * @return 评论
+     */
+    public static Comment queryCommentByCommentId(long commentId) {
+        Comment comment= null;
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+                    "SELECT * FROM music.comment WHERE comment_id = ?");
+            preparedStatement.setLong(1, commentId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                comment = new Comment();
+                comment.setCommentId(resultSet.getLong("comment_id"));
+                comment.setContent(resultSet.getString("content"));
+                comment.setUserId(resultSet.getLong("user_id"));
+                comment.setCommentLevel(resultSet.getInt("comment_level"));
+                comment.setSongId(resultSet.getLong("song_id"));
+                comment.setTime(resultSet.getDate("time").toString());
+                comment.setLike(resultSet.getLong("like"));
+                comment.setDislike(resultSet.getLong("dislike"));
+                comment.setReplyCommentId(resultSet.getLong("reply_comment_id"));
+                comment.setReplyAmount(resultSet.getLong("reply_amount"));
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return comment;
+    }
+
+
+    /**
+     * 获得二级评论 评中评
+     * @param commentId
+     * @return 评论中的评论列表
+     */
+    public static List<Comment> querySecondComments(long commentId) {
+        List<Comment> comments = new ArrayList<Comment>();
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+                    "SELECT * FROM music.comment WHERE reply_comment_id = ? AND comment_level = 1");
+            preparedStatement.setLong(1, commentId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Comment comment = new Comment();
+                comment.setCommentId(resultSet.getLong("comment_id"));
+                comment.setContent(resultSet.getString("content"));
+                comment.setUserId(resultSet.getLong("user_id"));
+                comment.setCommentLevel(resultSet.getInt("comment_level"));
+                comment.setSongId(resultSet.getLong("song_id"));
+                comment.setTime(resultSet.getDate("time").toString());
+                comment.setLike(resultSet.getLong("like"));
+                comment.setDislike(resultSet.getLong("dislike"));
+                comment.setReplyCommentId(resultSet.getLong("reply_comment_id"));
+                comment.setReplyAmount(resultSet.getLong("reply_amount"));
+                //此条评论下还有评论
+                if (comment.getReplyCommentId() != 0) {
+                    Comment commentInComment = queryCommentByCommentId(comment.getReplyCommentId());
+                    if (commentInComment != null) {
+                        comment.setReplyComment(commentInComment);
+                    }
+                }
+                comments.add(comment);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return comments;
+    }
+
+    /**
+     * 删除评论 非真正意义上的删除 只是将评论的内容设为null
+     * @param commentId
+     * @return 删除结果
+     */
+    public static boolean deleteComment(long commentId) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+                    "UPDATE music.comment SET content = NULL WHERE comment_id = ?");
+            preparedStatement.setLong(1, commentId);
+            if (preparedStatement.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 
 }

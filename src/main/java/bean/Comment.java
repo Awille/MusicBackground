@@ -42,6 +42,10 @@ public class Comment {
      * 回复数量
      */
     private long replyAmount;
+    /**
+     * 回复他的评论实体对象 在二级评论中才有
+     */
+    private Comment replyComment;
 
     public long getCommentId() {
         return commentId;
@@ -121,5 +125,13 @@ public class Comment {
 
     public void setReplyAmount(long replyAmount) {
         this.replyAmount = replyAmount;
+    }
+
+    public Comment getReplyComment() {
+        return replyComment;
+    }
+
+    public void setReplyComment(Comment replyComment) {
+        this.replyComment = replyComment;
     }
 }
