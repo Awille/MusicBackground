@@ -3,7 +3,6 @@ package database.crud;
 import bean.Song;
 import bean.songlist.SongList;
 import bean.songlist.SongListBasicInfo;
-import commonconstant.CommonConstant;
 import database.DatabaseConnectManager;
 
 import java.sql.PreparedStatement;
@@ -182,7 +181,7 @@ public class SongListCrud {
             return false;
         }
         //删除歌单失败
-        if (!deleteSongList(songListId)) {
+        if (!deleteSongListDirectly(songListId)) {
             //用缓存回退数据
             for (Long songId : songIdList) {
                 if (!addSongToSongList(songId, songListId)) {
@@ -198,7 +197,7 @@ public class SongListCrud {
         return true;
     }
 
-    private static boolean deleSongListDirectly(long songListId) {
+    private static boolean deleteSongListDirectly(long songListId) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
