@@ -1,6 +1,6 @@
 <%@ page import="bean.User" %>
 <%@ page import="database.crud.UserCrud" %>
-<%@ page import="database.DatabaseConnectManager" %><%--
+<%@ page import="deprecateddbconnect.DatabaseConnectManager" %><%--
   Created by IntelliJ IDEA.
   User: will
   Date: 2019/2/25
@@ -18,16 +18,13 @@
 </html>
 
 <%
-//  if (DatabaseConnectManager.getInstance().establishConnection()) {
-//    User user = new User();
-//    user.setAccount("Awille");
-//    user.setPassword("123456");
-//    user.setNickName("Awille");
-//    if (UserCrud.addUser(user) != null) {
-//      System.out.println("Success");
-//    } else {
-//      System.out.println("Fail");
-//    }
-//    DatabaseConnectManager.getInstance().closeConnection();
-//  }
+  User user = new User();
+  user.setAccount("testDriud");
+  user.setPassword("123456");
+  user.setNickName("Awille");
+  if (UserCrud.addUser(user) != null) {
+    System.out.println("Success");
+  } else {
+    System.out.println("Fail");
+  }
 %>

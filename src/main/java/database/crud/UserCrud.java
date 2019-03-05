@@ -1,11 +1,8 @@
 package database.crud;
 
 import bean.User;
-import commonconstant.CommonConstant;
-import database.DatabaseConnectManager;
-import sun.dc.pr.PRError;
+import database.DbConnectManager;
 import utils.EncryptUtils;
-import utils.HtmlFilterUtils;
 import utils.TextUtils;
 
 import java.sql.PreparedStatement;
@@ -23,7 +20,7 @@ public class UserCrud {
         if (user != null && !TextUtils.isEmpty(user.getAccount()) && !TextUtils.isEmpty(user.getPassword()) && !TextUtils.isEmpty(user.getNickName())) {
             PreparedStatement preparedStatement = null;
             try {
-                preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+                preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                         "INSERT INTO music.user (account, nick_name, password, gender, birth, signature, avatar_url) VALUES (?, ?, ?, ?, ?, ?, ?)",
                         Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, user.getAccount());
@@ -66,7 +63,7 @@ public class UserCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "UPDATE music.user set "
                             + "nick_name = ?, gender = ?, birth = ?, signature = ?"
                             + "WHERE account = ?");
@@ -81,6 +78,7 @@ public class UserCrud {
                 return null;
             }
         } catch (SQLException e) {
+            System.out.println("异常" + e.getMessage());
             e.printStackTrace();
         } finally {
             try {
@@ -103,7 +101,7 @@ public class UserCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "UPDATE music.user set password = ? WHERE account = ?");
             preparedStatement.setString(1, EncryptUtils.encryptByMd5(user.getPassword()));
             preparedStatement.setString(2, user.getAccount());
@@ -136,7 +134,7 @@ public class UserCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "UPDATE music.user set avatar_url = ? WHERE account = ?");
             preparedStatement.setString(1, account);
             preparedStatement.setString(2, account);
@@ -170,7 +168,7 @@ public class UserCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "SELECT * FROM music.user WHERE  account = ?");
             preparedStatement.setString(1, account);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -207,7 +205,7 @@ public class UserCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "DELETE FROM music.user where account = ?");
             preparedStatement.setString(1, account);
             if (preparedStatement.executeUpdate() > 0) {

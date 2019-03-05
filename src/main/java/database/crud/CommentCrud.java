@@ -2,7 +2,7 @@ package database.crud;
 
 
 import bean.Comment;
-import database.DatabaseConnectManager;
+import database.DbConnectManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +20,7 @@ public class CommentCrud {
     public static Comment addComment(Comment comment) {
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "INSERT INTO music.comment (content, user_id, song_id, reply_comment_id, `like`, dislike) VALUES (?, ?, ?, ?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, comment.getContent());
@@ -62,7 +62,7 @@ public class CommentCrud {
     private static boolean updateReplyAmount(long replyCommentId) {
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "UPDATE music.comment SET reply_amount = reply_amount + 1 " +
                             "WHERE comment_id = ?");
             preparedStatement.setLong(1, replyCommentId);
@@ -92,7 +92,7 @@ public class CommentCrud {
         List<Comment> comments = new ArrayList<Comment>();
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "SELECT * FROM music.comment WHERE song_id = ? AND  comment_level = 0");
             preparedStatement.setLong(1, songId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -133,7 +133,7 @@ public class CommentCrud {
         Comment comment= null;
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "SELECT * FROM music.comment WHERE comment_id = ?");
             preparedStatement.setLong(1, commentId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -173,7 +173,7 @@ public class CommentCrud {
         List<Comment> comments = new ArrayList<Comment>();
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "SELECT * FROM music.comment WHERE reply_comment_id = ? AND comment_level = 1");
             preparedStatement.setLong(1, commentId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -219,7 +219,7 @@ public class CommentCrud {
     public static boolean deleteComment(long commentId) {
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "UPDATE music.comment SET content = NULL WHERE comment_id = ?");
             preparedStatement.setLong(1, commentId);
             if (preparedStatement.executeUpdate() > 0) {

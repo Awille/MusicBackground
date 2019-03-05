@@ -1,4 +1,4 @@
-package database;
+package deprecateddbconnect;
 
 import commonconstant.CommonConstant;
 
@@ -38,7 +38,6 @@ public class DatabaseConnectManager {
      */
     public boolean establishConnection() {
         try {
-            System.out.println(connectUrl);
             databaseConnection = DriverManager.getConnection(connectUrl, CommonConstant.Database.userName, CommonConstant.Database.password);
             return true;
         } catch (SQLException e) {

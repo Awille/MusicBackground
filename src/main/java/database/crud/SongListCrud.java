@@ -3,7 +3,7 @@ package database.crud;
 import bean.Song;
 import bean.songlist.SongList;
 import bean.songlist.SongListBasicInfo;
-import database.DatabaseConnectManager;
+import database.DbConnectManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +24,7 @@ public class SongListCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "INSERT INTO music.songlist (user_id, name, avatar_url) VALUE (?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setLong(1, songList.getBasicInfo().getUserId());
@@ -60,7 +60,7 @@ public class SongListCrud {
         SongList songList = null;
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "select * FROM music.songlist WHERE song_list_id = ?");
             preparedStatement.setLong(1, songListId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -98,7 +98,7 @@ public class SongListCrud {
         boolean isEmpty = true;
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "SELECT music.song_id FROM music.songlist_song_relation WHERE song_list_id = ?");
             preparedStatement.setLong(1, songListId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -134,7 +134,7 @@ public class SongListCrud {
         List<SongList> songLists = new ArrayList<SongList>();
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "SELECT * FROM music.songlist WHERE user_id = ?");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -200,7 +200,7 @@ public class SongListCrud {
     private static boolean deleteSongListDirectly(long songListId) {
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "DELETE FROM music.songlist WHERE song_list_id = ?");
             preparedStatement.setLong(1, songListId);
             if (preparedStatement.executeUpdate() > 0) {
@@ -222,7 +222,7 @@ public class SongListCrud {
         List<Long> userIdList = new ArrayList<Long>();
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "SELECT song_id FROM music.songlist_song_relation WHERE song_list_id = ?");
             preparedStatement.setLong(1, songListId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -251,7 +251,7 @@ public class SongListCrud {
     public static boolean deleteSongListInRelation(long songListId) {
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "DELETE FROM music.songlist_song_relation WHERE song_list_id = ?");
             preparedStatement.setLong(1, songListId);
             if (preparedStatement.executeUpdate() > 0) {
@@ -278,7 +278,7 @@ public class SongListCrud {
     public static boolean addSongToSongList(long songId, long songListId) {
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DatabaseConnectManager.getInstance().getDatabaseConnection().prepareStatement(
+            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
                     "INSERT INTO music.songlist_song_relation (song_list_id, song_id) VALUE (?, ?)");
             preparedStatement.setLong(1, songListId);
             preparedStatement.setLong(2, songId);
