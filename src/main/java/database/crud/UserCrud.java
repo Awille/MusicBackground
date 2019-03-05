@@ -1,6 +1,7 @@
 package database.crud;
 
 import bean.User;
+import com.alibaba.druid.pool.DruidPooledConnection;
 import database.DbConnectManager;
 import utils.EncryptUtils;
 import utils.TextUtils;
@@ -14,9 +15,10 @@ public class UserCrud {
     /**
      * 增加用户
      * @param user
+     * @param connection
      * @return 增加的用户实例
      */
-    public static User addUser(User user) {
+    public static User addUser(User user, DruidPooledConnection connection) {
         if (user != null && !TextUtils.isEmpty(user.getAccount()) && !TextUtils.isEmpty(user.getPassword()) && !TextUtils.isEmpty(user.getNickName())) {
             PreparedStatement preparedStatement = null;
             try {
@@ -55,9 +57,10 @@ public class UserCrud {
     /**
      * 更新用户信息，不包括密码以及头像
      * @param user
+     * @param connection
      * @return 更新结果
      */
-    public static User updateUser(User user) {
+    public static User updateUser(User user, DruidPooledConnection connection) {
         if (user == null) {
             return null;
         }
@@ -93,9 +96,10 @@ public class UserCrud {
     /**
      * 更改用户密码
      * @param user
+     * @param connection
      * @return 修改密码成功与否
      */
-    public static boolean changePassword(User user) {
+    public static boolean changePassword(User user, DruidPooledConnection connection) {
         if (user == null) {
             return false;
         }
@@ -125,10 +129,11 @@ public class UserCrud {
     /**
      * 更改用户头像
      * @param account
+     * @param connection
      * @param avatarUrl
      * @return 用户头像更改结果
      */
-    public static boolean changeUserAvatarUrl(String account, String avatarUrl) {
+    public static boolean changeUserAvatarUrl(String account, String avatarUrl, DruidPooledConnection connection) {
         if (TextUtils.isEmpty(account)) {
             return false;
         }
@@ -159,9 +164,10 @@ public class UserCrud {
     /**
      * 用户查询
      * @param account
+     * @param connection
      * @return 用户查询结果
      */
-    public static User queryUserByAccount(String account) {
+    public static User queryUserByAccount(String account, DruidPooledConnection connection) {
         User user = null;
         if (TextUtils.isEmpty(account)) {
             return null;
@@ -197,9 +203,10 @@ public class UserCrud {
     /**
      * 删除用户
      * @param account
+     * @param connection
      * @return 用户删除结果
      */
-    public static boolean deleteUser(String account) {
+    public static boolean deleteUser(String account, DruidPooledConnection connection) {
         if (TextUtils.isEmpty(account)) {
             return false;
         }

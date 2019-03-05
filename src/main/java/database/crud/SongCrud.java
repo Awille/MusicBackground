@@ -1,20 +1,19 @@
 package database.crud;
 
 import bean.Song;
+import com.alibaba.druid.pool.DruidPooledConnection;
 import database.DbConnectManager;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class SongCrud {
     /**
      * 添加歌曲
      * @param song
+     * @param connection
      * @return 添加歌曲实例
      */
-    public static Song addSong(Song song) {
+    public static Song addSong(Song song, Connection connection) {
         if (song == null) {
             return null;
         }
@@ -52,9 +51,10 @@ public class SongCrud {
     /**
      * 查询歌曲
      * @param songId
+     * @param connection
      * @return 查询歌曲实例
      */
-    public static Song querySongBySongId(long songId) {
+    public static Song querySongBySongId(long songId, DruidPooledConnection connection) {
         Song song = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -86,9 +86,10 @@ public class SongCrud {
     /**
      * 更新歌曲信息
      * @param song
+     * @param connection
      * @return 更新歌曲实例
      */
-    public static Song updateSong(Song song) {
+    public static Song updateSong(Song song, DruidPooledConnection connection) {
         if (song == null) {
             return null;
         }
@@ -121,9 +122,10 @@ public class SongCrud {
     /**
      * 删除歌曲
      * @param songId
+     * @param connection
      * @return 删除结果
      */
-    public static boolean deleteSong(long songId) {
+    public static boolean deleteSong(long songId, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(

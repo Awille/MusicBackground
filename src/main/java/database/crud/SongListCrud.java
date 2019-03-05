@@ -3,6 +3,7 @@ package database.crud;
 import bean.Song;
 import bean.songlist.SongList;
 import bean.songlist.SongListBasicInfo;
+import com.alibaba.druid.pool.DruidPooledConnection;
 import database.DbConnectManager;
 
 import java.sql.PreparedStatement;
@@ -16,9 +17,10 @@ public class SongListCrud {
     /**
      * 增加歌曲
      * @param songList
+     * @param connection
      * @return 增加歌曲实例
      */
-    public static SongList addSongList(SongList songList) {
+    public static SongList addSongList(SongList songList, DruidPooledConnection connection) {
         if (songList == null) {
             return null;
         }
@@ -54,9 +56,10 @@ public class SongListCrud {
     /**
      * 查询歌单基本信息
      * @param songListId
+     * @param connection
      * @return 歌单实例
      */
-    public static SongList querySongListByUserId(long songListId) {
+    public static SongList querySongListByUserId(long songListId, DruidPooledConnection connection) {
         SongList songList = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -91,9 +94,10 @@ public class SongListCrud {
     /**
      * 根据歌单ID查找歌曲
      * @param songListId
+     * @param connection
      * @return 返回歌曲列表
      */
-    public static List<Song> getSongsFromSongList(long songListId) {
+    public static List<Song> getSongsFromSongList(long songListId, DruidPooledConnection connection) {
         List<Song> songs = new ArrayList<Song>();
         boolean isEmpty = true;
         PreparedStatement preparedStatement = null;
@@ -105,7 +109,7 @@ public class SongListCrud {
             while (resultSet.next()) {
                 isEmpty = false;
                 long songId = resultSet.getLong("song_id");
-                Song song = SongCrud.querySongBySongId(songId);
+                Song song = SongCrud.querySongBySongId(songId, connection);
                 songs.add(song);
             }
             resultSet.close();
@@ -128,9 +132,10 @@ public class SongListCrud {
     /**
      * 得到用户的歌单信息
      * @param userId
+     * @param connection
      * @return 得到用户的歌单信息
      */
-    public static List<SongList> getSongListsByUserId(long userId) {
+    public static List<SongList> getSongListsByUserId(long userId, DruidPooledConnection connection) {
         List<SongList> songLists = new ArrayList<SongList>();
         PreparedStatement preparedStatement = null;
         try {
@@ -167,24 +172,25 @@ public class SongListCrud {
      * 1、先缓存关系表中的歌单 2、先删除关系表中的歌单记录 3、删除歌单
      * 任何一步出现错误，都要进行回退数据库
      * @param songListId 歌单ID
+     * @param connection
      * @return 删除歌单是否成功
      */
-    public static boolean deleteSongList(long songListId) {
+    public static boolean deleteSongList(long songListId, DruidPooledConnection connection) {
         //先缓存关系表中的歌单
-        List<Long> songIdList = getSongIdsBySongListId(songListId);
+        List<Long> songIdList = getSongIdsBySongListId(songListId, connection);
         //回退失败的数据
         List<Long> failBackSongId = new ArrayList<Long>();
         if (songIdList == null) {
             return false;
         }
-        if (!deleteSongListInRelation(songListId)) {
+        if (!deleteSongListInRelation(songListId, connection)) {
             return false;
         }
         //删除歌单失败
-        if (!deleteSongListDirectly(songListId)) {
+        if (!deleteSongListDirectly(songListId, connection)) {
             //用缓存回退数据
             for (Long songId : songIdList) {
-                if (!addSongToSongList(songId, songListId)) {
+                if (!addSongToSongList(songId, songListId, connection)) {
                     failBackSongId.add(songId);
                 }
             }
@@ -197,7 +203,13 @@ public class SongListCrud {
         return true;
     }
 
-    private static boolean deleteSongListDirectly(long songListId) {
+    /**
+     * 直接删除歌单
+     * @param songListId
+     * @param connection
+     * @return
+     */
+    private static boolean deleteSongListDirectly(long songListId, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
@@ -218,7 +230,13 @@ public class SongListCrud {
         return false;
     }
 
-    public static List<Long> getSongIdsBySongListId(long songListId) {
+    /**
+     * 通过歌单ID查找歌曲
+     * @param songListId
+     * @param connection
+     * @return
+     */
+    public static List<Long> getSongIdsBySongListId(long songListId, DruidPooledConnection connection) {
         List<Long> userIdList = new ArrayList<Long>();
         PreparedStatement preparedStatement = null;
         try {
@@ -246,9 +264,10 @@ public class SongListCrud {
     /**
      * 在歌单 歌曲关信息表中删除
      * @param songListId
+     * @param connection
      * @return 删除结果
      */
-    public static boolean deleteSongListInRelation(long songListId) {
+    public static boolean deleteSongListInRelation(long songListId, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
@@ -273,9 +292,10 @@ public class SongListCrud {
      * 歌单中添加歌曲
      * @param songId
      * @param songListId
+     * @param connection
      * @return 添加结果
      */
-    public static boolean addSongToSongList(long songId, long songListId) {
+    public static boolean addSongToSongList(long songId, long songListId, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(

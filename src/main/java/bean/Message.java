@@ -3,6 +3,8 @@ package bean;
 public class Message {
     /**
      * 返回码
+     * 0 业务成功
+     * 1 业务失败
      */
     private String code;
     /**

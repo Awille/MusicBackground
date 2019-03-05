@@ -2,6 +2,7 @@ package database.crud;
 
 
 import bean.Comment;
+import com.alibaba.druid.pool.DruidPooledConnection;
 import database.DbConnectManager;
 
 import java.sql.PreparedStatement;
@@ -15,12 +16,13 @@ public class CommentCrud {
     /**
      * 添加评论
      * @param comment
+     * @param connection
      * @return 添加评论实例
      */
-    public static Comment addComment(Comment comment) {
+    public static Comment addComment(Comment comment, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "INSERT INTO music.comment (content, user_id, song_id, reply_comment_id, `like`, dislike) VALUES (?, ?, ?, ?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, comment.getContent());
@@ -32,7 +34,7 @@ public class CommentCrud {
             if (preparedStatement.executeUpdate() > 0) {
                 //更新成功后 添加相关评论数量
                 if (comment.getReplyCommentId() != 0) {
-                    updateReplyAmount(comment.getReplyCommentId());
+                    updateReplyAmount(comment.getReplyCommentId(), connection);
                 }
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
                 if (resultSet.next()) {
@@ -57,9 +59,10 @@ public class CommentCrud {
     /**
      * 更新评论数量
      * @param replyCommentId 回复评论ID
+     * @param connection
      * @return 是否更新成功
      */
-    private static boolean updateReplyAmount(long replyCommentId) {
+    private static boolean updateReplyAmount(long replyCommentId, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
@@ -86,9 +89,10 @@ public class CommentCrud {
     /**
      * 获得顶级评论
      * @param songId 歌曲ID
+     * @param connection
      * @return 评论列表
      */
-    public static List<Comment> queryTopCommentsBySongId(long songId) {
+    public static List<Comment> queryTopCommentsBySongId(long songId,DruidPooledConnection connection) {
         List<Comment> comments = new ArrayList<Comment>();
         PreparedStatement preparedStatement = null;
         try {
@@ -127,9 +131,10 @@ public class CommentCrud {
     /**
      * 根据评论ID 查询评论
      * @param commentId
+     * @param connection
      * @return 评论
      */
-    public static Comment queryCommentByCommentId(long commentId) {
+    public static Comment queryCommentByCommentId(long commentId, DruidPooledConnection connection) {
         Comment comment= null;
         PreparedStatement preparedStatement = null;
         try {
@@ -167,9 +172,10 @@ public class CommentCrud {
     /**
      * 获得二级评论 评中评
      * @param commentId
+     * @param connection
      * @return 评论中的评论列表
      */
-    public static List<Comment> querySecondComments(long commentId) {
+    public static List<Comment> querySecondComments(long commentId, DruidPooledConnection connection) {
         List<Comment> comments = new ArrayList<Comment>();
         PreparedStatement preparedStatement = null;
         try {
@@ -191,7 +197,7 @@ public class CommentCrud {
                 comment.setReplyAmount(resultSet.getLong("reply_amount"));
                 //此条评论下还有评论
                 if (comment.getReplyCommentId() != 0) {
-                    Comment commentInComment = queryCommentByCommentId(comment.getReplyCommentId());
+                    Comment commentInComment = queryCommentByCommentId(comment.getReplyCommentId(), connection);
                     if (commentInComment != null) {
                         comment.setReplyComment(commentInComment);
                     }
@@ -214,9 +220,10 @@ public class CommentCrud {
     /**
      * 删除评论 非真正意义上的删除 只是将评论的内容设为null
      * @param commentId
+     * @param connection
      * @return 删除结果
      */
-    public static boolean deleteComment(long commentId) {
+    public static boolean deleteComment(long commentId, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
