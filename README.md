@@ -9,6 +9,11 @@
 失败的，这时候就要涉及回退的问题，在最坏的情况下，回退也失败的问题该如何
 解决呢？
 
-### 2\、触发器问题
+### 2、触发器问题
 非常遗憾，MYSQL中触发器中不能对本表进行 insert ,update ,delete 操作，
 以免递归循环触发。
+
+### 3、数据库连接池druid的问题
+在写好配置文件以后，用DruidDataSourceFactory.createDataSource发现总是
+包classNotFoundException，后来发现是需要把druid的jar包放到tomcat的lib目录之下
+，有关这个问题好像在mysql-connector的jar包也要放到tomcat那里。
