@@ -17,3 +17,10 @@
 在写好配置文件以后，用DruidDataSourceFactory.createDataSource发现总是
 包classNotFoundException，后来发现是需要把druid的jar包放到tomcat的lib目录之下
 ，有关这个问题好像在mysql-connector的jar包也要放到tomcat那里。
+
+
+### 4、REST 模式下的 API 设计
+GET: 查询
+POST: 增加
+PUT:修改
+DELETE: 删除
