@@ -2,9 +2,10 @@ package bean.songlist;
 
 import bean.Song;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class SongList {
+public class SongList implements Serializable {
     /**
      * 歌单基础信息
      */

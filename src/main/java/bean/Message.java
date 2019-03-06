@@ -1,6 +1,8 @@
 package bean;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
     /**
      * 返回码
      * 0 业务成功

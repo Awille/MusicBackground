@@ -1,6 +1,8 @@
 package bean;
 
-public class Comment {
+import java.io.Serializable;
+
+public class Comment implements Serializable {
     /**
      * 评论ID
      */

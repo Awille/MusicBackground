@@ -1,11 +1,13 @@
 package database.crud;
 
+import bean.UploadFile;
 import bean.User;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import database.DbConnectManager;
 import utils.EncryptUtils;
 import utils.TextUtils;
 
+import java.io.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -232,4 +234,53 @@ public class UserCrud {
         }
         return false;
     }
+
+    /**
+     * 上传图片返回文件名
+     * @param img
+     * @return 文件路径
+     */
+    private static String saveUserAvatar(UploadFile img) {
+        byte[] bytes = img.getFileStr().getBytes();
+        String fileFormat = img.getFileName().substring(img.getFileName().indexOf("."));
+        String fileName = "upload/avatar/" + img.getAccount() + "_avatar." + fileFormat;
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileOutputStream = new FileOutputStream(fileName);
+            fileOutputStream.write(bytes);
+            return  fileName;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fileOutputStream != null) {
+                try {
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return fileName;
+    }
+
+    /**
+     * 上传图片函数
+     * @param file
+     * @param connection
+     * @return 图片上传结果
+     */
+    public static boolean uploadUserAvatar(UploadFile file, DruidPooledConnection connection) {
+        String avatarUrl = saveUserAvatar(file);
+        if (avatarUrl == null) {
+            return false;
+        }
+        if (changeUserAvatarUrl(file.getAccount(), avatarUrl, connection)) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

@@ -1,6 +1,8 @@
 package bean.songlist;
 
-public class SongListBasicInfo {
+import java.io.Serializable;
+
+public class SongListBasicInfo implements Serializable {
     /**
      * 歌单ID
      */
