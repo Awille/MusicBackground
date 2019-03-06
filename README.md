@@ -24,3 +24,22 @@ GET: 查询
 POST: 增加
 PUT:修改
 DELETE: 删除
+
+定义业务上的同意请求体
+```$java
+class request() {
+    //请求服务
+    String service;
+    //请求数据
+    Object data;
+}
+```
+
+#### 4.1 USER 设计
+- 查询用户 ：GET方法，根据Account查询
+- 更新用户：PUT方法 
+service 101 更改用户信息 
+service 102 更改密码
+service 103 更改头像
+- 添加用户： POST
+- 删除用户：DELETE

@@ -65,7 +65,7 @@ public class CommentCrud {
     private static boolean updateReplyAmount(long replyCommentId, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "UPDATE music.comment SET reply_amount = reply_amount + 1 " +
                             "WHERE comment_id = ?");
             preparedStatement.setLong(1, replyCommentId);
@@ -96,7 +96,7 @@ public class CommentCrud {
         List<Comment> comments = new ArrayList<Comment>();
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "SELECT * FROM music.comment WHERE song_id = ? AND  comment_level = 0");
             preparedStatement.setLong(1, songId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -138,7 +138,7 @@ public class CommentCrud {
         Comment comment= null;
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "SELECT * FROM music.comment WHERE comment_id = ?");
             preparedStatement.setLong(1, commentId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -179,7 +179,7 @@ public class CommentCrud {
         List<Comment> comments = new ArrayList<Comment>();
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "SELECT * FROM music.comment WHERE reply_comment_id = ? AND comment_level = 1");
             preparedStatement.setLong(1, commentId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -226,7 +226,7 @@ public class CommentCrud {
     public static boolean deleteComment(long commentId, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "UPDATE music.comment SET content = NULL WHERE comment_id = ?");
             preparedStatement.setLong(1, commentId);
             if (preparedStatement.executeUpdate() > 0) {

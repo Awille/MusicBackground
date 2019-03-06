@@ -19,7 +19,7 @@ public class SongCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "INSERT INTO music.song (lyric_url, album_name, singer, name) " +
                             "VALUE (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, song.getLyricUrl());
@@ -58,7 +58,7 @@ public class SongCrud {
         Song song = null;
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "select * from music.song where song_id = ?");
             preparedStatement.setLong(1, songId);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -95,7 +95,7 @@ public class SongCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "update music.song set " +
                             "lyric_url = ?, album_name = ?, singer = ?, name = ? " +
                             "where song_id = ?");
@@ -128,7 +128,7 @@ public class SongCrud {
     public static boolean deleteSong(long songId, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "DELETE FROM music.song where song_id = ?");
             preparedStatement.setLong(1, songId);
             if (preparedStatement.executeUpdate() > 0) {

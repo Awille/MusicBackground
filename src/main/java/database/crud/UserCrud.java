@@ -22,7 +22,7 @@ public class UserCrud {
         if (user != null && !TextUtils.isEmpty(user.getAccount()) && !TextUtils.isEmpty(user.getPassword()) && !TextUtils.isEmpty(user.getNickName())) {
             PreparedStatement preparedStatement = null;
             try {
-                preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+                preparedStatement = connection.prepareStatement(
                         "INSERT INTO music.user (account, nick_name, password, gender, birth, signature, avatar_url) VALUES (?, ?, ?, ?, ?, ?, ?)",
                         Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, user.getAccount());
@@ -66,7 +66,7 @@ public class UserCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "UPDATE music.user set "
                             + "nick_name = ?, gender = ?, birth = ?, signature = ?"
                             + "WHERE account = ?");
@@ -105,7 +105,7 @@ public class UserCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "UPDATE music.user set password = ? WHERE account = ?");
             preparedStatement.setString(1, EncryptUtils.encryptByMd5(user.getPassword()));
             preparedStatement.setString(2, user.getAccount());
@@ -139,7 +139,7 @@ public class UserCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "UPDATE music.user set avatar_url = ? WHERE account = ?");
             preparedStatement.setString(1, account);
             preparedStatement.setString(2, account);
@@ -174,7 +174,7 @@ public class UserCrud {
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "SELECT * FROM music.user WHERE  account = ?");
             preparedStatement.setString(1, account);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -206,13 +206,14 @@ public class UserCrud {
      * @param connection
      * @return 用户删除结果
      */
+    //todo 待更新 删除用户并且与之有关的所有操作， 注销用户操作一般不要做
     public static boolean deleteUser(String account, DruidPooledConnection connection) {
         if (TextUtils.isEmpty(account)) {
             return false;
         }
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = DbConnectManager.getINSTANCE().getConnection().prepareStatement(
+            preparedStatement = connection.prepareStatement(
                     "DELETE FROM music.user where account = ?");
             preparedStatement.setString(1, account);
             if (preparedStatement.executeUpdate() > 0) {

@@ -18,13 +18,5 @@
 </html>
 
 <%
-  User user = new User();
-  user.setAccount("testDriud");
-  user.setPassword("123456");
-  user.setNickName("Awille");
-  if (UserCrud.addUser(user) != null) {
-    System.out.println("Success");
-  } else {
-    System.out.println("Fail");
-  }
+
 %>

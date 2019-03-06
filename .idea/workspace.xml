@@ -7,7 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="586bc6b8-a244-4cee-93ae-6a011261709a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/web/restful/user.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/bean/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/bean/Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/CommentCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/CommentCrud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/SongCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/SongCrud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/SongListCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/SongListCrud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/UserCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/UserCrud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/crud/CommentCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/crud/CommentCrud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/crud/SongCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/crud/SongCrud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/crud/SongListCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/crud/SongListCrud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/crud/UserCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/crud/UserCrud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -71,11 +85,11 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="0-SNAPSHOT" value="1" />
-          <entry key="class" value="4" />
+          <entry key="class" value="5" />
           <entry key="iml" value="1" />
           <entry key="java" value="57" />
-          <entry key="jsp" value="7" />
-          <entry key="md" value="4" />
+          <entry key="jsp" value="9" />
+          <entry key="md" value="5" />
           <entry key="properties" value="4" />
           <entry key="sql" value="3" />
           <entry key="user" value="1" />
@@ -84,12 +98,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="4" />
+          <entry key="CLASS" value="5" />
           <entry key="Database Element" value="1" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="JAVA" value="57" />
-          <entry key="JSP" value="7" />
-          <entry key="Markdown" value="4" />
+          <entry key="JSP" value="9" />
+          <entry key="Markdown" value="5" />
           <entry key="Properties" value="4" />
           <entry key="SQL" value="2" />
           <entry key="Scratch" value="1" />
@@ -101,8 +115,8 @@
         <counts>
           <entry key="dummy" value="54" />
           <entry key="java" value="11886" />
-          <entry key="jsp" value="233" />
-          <entry key="md" value="443" />
+          <entry key="jsp" value="286" />
+          <entry key="md" value="583" />
           <entry key="properties" value="19" />
           <entry key="xml" value="61" />
         </counts>
@@ -110,8 +124,8 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="11880" />
-          <entry key="JSP" value="233" />
-          <entry key="Markdown" value="443" />
+          <entry key="JSP" value="286" />
+          <entry key="Markdown" value="583" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="Properties" value="19" />
           <entry key="SQL" value="6" />
@@ -122,14 +136,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/UserCrud.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
+            <state relative-caret-position="-1752">
               <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="345">
+                <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="9" column="64" lean-forward="true" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/restful/user.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -139,9 +183,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -188,19 +232,20 @@
         <option value="$PROJECT_DIR$/src/main/java/bean/Song.java" />
         <option value="$PROJECT_DIR$/src/main/java/ThreadPoolService.java" />
         <option value="$PROJECT_DIR$/src/main/java/bean/Comment.java" />
-        <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/database/DatabaseConnectManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/db_server.properties" />
         <option value="$PROJECT_DIR$/src/main/java/database/DbConnectManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/deprecateddbconnect/DatabaseConnectManager.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/bean/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/crud/UserCrud.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/crud/SongListCrud.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/crud/SongCrud.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/crud/CommentCrud.java" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/web/restful/user.jsp" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -249,10 +294,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
+    <option name="x" value="-180" />
+    <option name="y" value="75" />
+    <option name="width" value="1750" />
+    <option name="height" value="970" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -267,32 +312,6 @@
             <path>
               <item name="MusicBackground" type="b2602c69:ProjectViewProjectNode" />
               <item name="MusicBackground" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MusicBackground" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MusicBackground" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MusicBackground" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MusicBackground" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MusicBackground" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MusicBackground" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="MusicBackground_war_exploded" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MusicBackground" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MusicBackground" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="MusicBackground_war_exploded" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MusicBackground" type="b2602c69:ProjectViewProjectNode" />
@@ -367,6 +386,12 @@
             </path>
             <path>
               <item name="MusicBackground" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MusicBackground" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="restful" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MusicBackground" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -380,7 +405,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551776398789" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551850591328" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -507,17 +532,18 @@
       <workItem from="1551692226641" duration="7392000" />
       <workItem from="1551749512875" duration="14469000" />
       <workItem from="1551779602424" duration="1954000" />
-      <workItem from="1551844163690" duration="284000" />
+      <workItem from="1551844163690" duration="3017000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88413000" />
+    <option name="totallyTimeSpent" value="91146000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.27010724" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.27010724" />
       <window_info id="Structure" order="1" sideWeight="0.5023585" side_tool="true" weight="0.26340482" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -527,14 +553,14 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.37252125" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.37252125" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.2266289" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.2266289" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.3286119" />
       <window_info anchor="bottom" id="Application Servers" order="12" weight="0.3286119" />
@@ -783,23 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="76">
-            <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/DbConnectManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -857,13 +866,44 @@
     <entry file="file://$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/databaseacess/DatabaseConnect.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="64" lean-forward="true" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/xampp/tomcat/lib/servlet-api.jar!/javax/servlet/http/HttpServletRequest.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/restful/user.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/UserCrud.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
+        <state relative-caret-position="-1752">
           <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="345">
+            <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
