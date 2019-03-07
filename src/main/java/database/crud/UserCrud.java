@@ -4,6 +4,7 @@ import bean.UploadFile;
 import bean.User;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import database.DbConnectManager;
+import sun.misc.BASE64Decoder;
 import utils.EncryptUtils;
 import utils.TextUtils;
 
@@ -75,7 +76,7 @@ public class UserCrud {
             preparedStatement.setString(1, user.getNickName());
             preparedStatement.setInt(2, user.getGender());
             preparedStatement.setString(3, user.getBirth());
-            preparedStatement.setString(4, user.getSignature());
+            preparedStatement.setString(4, user.getSignature() == null ? "" : user.getSignature());
             preparedStatement.setString(5, user.getAccount());
             if (preparedStatement.executeUpdate() > 0) {
                 return user;
@@ -241,9 +242,38 @@ public class UserCrud {
      * @return 文件路径
      */
     private static String saveUserAvatar(UploadFile img) {
-        byte[] bytes = img.getFileStr().getBytes();
+        boolean flag = false;
+        byte[] bytes = null;
+        try {
+            bytes = new BASE64Decoder().decodeBuffer(img.getFileStr());
+            flag = true;
+        } catch (IOException e) {
+            flag = false;
+            e.printStackTrace();
+        }
+        if (!flag) {
+            return null;
+        }
+        flag = false;
         String fileFormat = img.getFileName().substring(img.getFileName().indexOf("."));
-        String fileName = "upload/avatar/" + img.getAccount() + "_avatar." + fileFormat;
+        File path = new File("upload\\avatar");
+        if (!path.exists()) {
+            flag = path.mkdirs();
+        }
+        String fileName = "upload\\avatar\\" + img.getAccount() + "_avatar" + fileFormat;
+        File imgFile = new File(fileName);
+        flag = true;
+        if (!imgFile.exists()) {
+            try {
+                imgFile.createNewFile();
+            } catch (IOException e) {
+                flag = false;
+                e.printStackTrace();
+            }
+        }
+        if (!flag) {
+            return null;
+        }
         FileOutputStream fileOutputStream = null;
         try {
             fileOutputStream = new FileOutputStream(fileName);
@@ -262,7 +292,7 @@ public class UserCrud {
                 }
             }
         }
-        return fileName;
+        return null;
     }
 
     /**
