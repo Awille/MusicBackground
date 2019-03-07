@@ -1,15 +1,7 @@
-<%@ page import="java.io.BufferedReader" %>
-<%@ page import="java.io.IOException" %>
-<%@ page import="bean.requestmessage.RequestBean" %>
-<%@ page import="database.DbConnectManager" %>
-<%@ page import="com.alibaba.druid.pool.DruidPooledConnection" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="com.alibaba.fastjson.JSON" %>
-<%@ page import="com.alibaba.fastjson.JSONObject" %>
-<%@ page import="bean.User" %>
-<%@ page import="database.crud.UserCrud" %>
-<%@ page import="bean.Message" %>
-<%@ page import="threadpoolservice.ThreadPoolService" %><%--
+<%@ page import="threadpoolservice.ThreadPoolService" %>
+<%@ page import="java.util.concurrent.FutureTask" %>
+<%@ page import="utils.UserTask" %>
+<%@ page import="utils.RequestProcessUtils" %><%--
   Created by IntelliJ IDEA.
   User: will
   Date: 2019/3/6
@@ -18,27 +10,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%!
-    public class MyRunnable implements Runnable {
-        private JspWriter myOut;
-
-        public MyRunnable(JspWriter jspWriter) {
-            this.myOut = jspWriter;
-        }
-        @Override
-        public void run() {
-            int a = 1;
-            try {
-                myOut.print("没有用吗");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-%>
 
 <%
     System.out.println("user method");
+
 
 
     //查看方法
@@ -95,9 +70,7 @@
 //            }
 //        }
 //    };
-    out.print("xxxxx");
-    MyRunnable myRunnable = new MyRunnable(out);
-    ThreadPoolService.requestExcutor.execute(myRunnable);
+    RequestProcessUtils.processUserRequest(request, out);
 
 
 %>

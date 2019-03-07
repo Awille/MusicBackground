@@ -9,4 +9,12 @@ public interface CommonConstant {
         String userName = "root";
         String password = "";
     }
+    //数据库操作结果
+    interface Result {
+        String SUCCESS_CODE = "0";
+        String FAIL_CODE = "-1";
+
+        String SUCCESS_MSG = "success";
+        String FAIL_MSG = "fail";
+    }
 }

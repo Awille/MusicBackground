@@ -18,6 +18,12 @@ public class Message implements Serializable {
      */
     private Object data;
 
+    public Message(String code, String message, Object data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
     public String getCode() {
         return code;
     }

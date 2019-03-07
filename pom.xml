@@ -54,5 +54,9 @@
             <version>1.2.56</version>
         </dependency>
     </dependencies>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
 </project>
