@@ -40,6 +40,6 @@ class request() {
 - 更新用户：PUT方法 
 service 101 更改用户信息 
 service 102 更改密码
-service 103 更改头像
+service 103 更改/上传 头像
 - 添加用户： POST
 - 删除用户：DELETE
