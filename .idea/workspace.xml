@@ -6,13 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="586bc6b8-a244-4cee-93ae-6a011261709a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/UserCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/UserCrud.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/crud/UserCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/crud/UserCrud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/database/crud/UserCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/crud/UserCrud.class" afterDir="false" />
-    </list>
+    <list default="true" id="586bc6b8-a244-4cee-93ae-6a011261709a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -144,8 +138,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="307">
-                <caret line="53" column="49" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="49" />
+              <first_editor relative-caret-position="347">
+                <caret line="53" column="28" lean-forward="true" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
               </first_editor>
               <second_editor />
             </state>
@@ -560,7 +554,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552025870515" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552026145797" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -692,12 +686,12 @@
       <workItem from="1551950980157" duration="5232000" />
       <workItem from="1551960756058" duration="5823000" />
       <workItem from="1551975157612" duration="1405000" />
-      <workItem from="1552016895720" duration="2990000" />
+      <workItem from="1552016895720" duration="3239000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133138000" />
+    <option name="totallyTimeSpent" value="133387000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -713,7 +707,7 @@
     <editor active="true" />
     <layout>
       <window_info anchor="top" id="Structure" order="0" sideWeight="0.5023585" weight="0.2631579" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.28954422" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.28954422" />
       <window_info id="Web" order="1" side_tool="true" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -723,13 +717,13 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.4137427" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.41666666" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.41666666" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" weight="0.3286119" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.22660819" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.22660819" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.3286119" />
       <window_info anchor="bottom" id="Application Servers" order="12" weight="0.3286119" />
@@ -1143,8 +1137,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="307">
-            <caret line="53" column="49" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="49" />
+          <first_editor relative-caret-position="347">
+            <caret line="53" column="28" lean-forward="true" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
           </first_editor>
           <second_editor />
         </state>
