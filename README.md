@@ -51,14 +51,14 @@ service 103 更改/上传 头像
 
 #### 4.2 SONG 设计
 - 查询歌曲信息 : GET方法 根据songId或者
-name歌曲名称进行查询
-歌曲名称进行模糊查询 两个key不能同时为非null，查询时以非null
+word关键词 进行查询
+word进行模糊查询 两个key不能同时为非null，查询时以非null
 的key决定查询方式
 
 - 歌曲上传 ：POST方法
-歌曲基本信息
-歌曲资源文件
-歌曲歌词文件
+service 201 : 歌曲文件
+service 202 : 歌词文件
+service 203 : 歌曲基本信息
 
 - PUT DELETE 歌曲信息更新 删除操作不开放
 

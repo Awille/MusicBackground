@@ -6,6 +6,7 @@ import com.alibaba.druid.pool.DruidPooledConnection;
 import database.DbConnectManager;
 import sun.misc.BASE64Decoder;
 import utils.EncryptUtils;
+import utils.FileUtils;
 import utils.TextUtils;
 
 import javax.servlet.ServletContext;
@@ -243,57 +244,7 @@ public class UserCrud {
      * @return 文件路径
      */
     private static String saveUserAvatar(UploadFile img, ServletContext servletContext) {
-        boolean flag = false;
-        byte[] bytes = null;
-        try {
-            bytes = new BASE64Decoder().decodeBuffer(img.getFileStr());
-            flag = true;
-        } catch (IOException e) {
-            flag = false;
-            e.printStackTrace();
-        }
-        if (!flag) {
-            return null;
-        }
-        flag = false;
-        String fileFormat = img.getFileName().substring(img.getFileName().indexOf("."));
-        File path = new File(servletContext.getRealPath("/") + "\\upload\\avatar");
-        if (!path.exists()) {
-            flag = path.mkdirs();
-        }
-        String fileName = servletContext.getRealPath("/") + "\\upload\\avatar\\" + img.getAccount() + "_avatar" + fileFormat;
-        File imgFile = new File(fileName);
-        flag = true;
-        if (!imgFile.exists()) {
-            try {
-                imgFile.createNewFile();
-            } catch (IOException e) {
-                flag = false;
-                e.printStackTrace();
-            }
-        }
-        if (!flag) {
-            return null;
-        }
-        FileOutputStream fileOutputStream = null;
-        try {
-            fileOutputStream = new FileOutputStream(fileName);
-            fileOutputStream.write(bytes);
-            return  fileName;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (fileOutputStream != null) {
-                try {
-                    fileOutputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return null;
+        return FileUtils.saveFile(img, servletContext, "\\upload\\avatar", "avatar");
     }
 
     /**

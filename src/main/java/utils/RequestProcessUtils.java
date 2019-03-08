@@ -22,7 +22,15 @@ public class RequestProcessUtils {
     }
 
     public static void processSongRequest(HttpServletRequest request, JspWriter out, ServletContext context) {
-
+        FutureTask<Boolean> futureTask = new FutureTask<>(new SongTask(request, out, context));
+        ThreadPoolService.requestExcutor.submit(futureTask);
+        try {
+            futureTask.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
 
