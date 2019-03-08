@@ -144,7 +144,7 @@ public class UserCrud {
         try {
             preparedStatement = connection.prepareStatement(
                     "UPDATE music.user set avatar_url = ? WHERE account = ?");
-            preparedStatement.setString(1, account);
+            preparedStatement.setString(1, avatarUrl);
             preparedStatement.setString(2, account);
             if (preparedStatement.executeUpdate() > 0) {
                 return true;
@@ -256,11 +256,11 @@ public class UserCrud {
         }
         flag = false;
         String fileFormat = img.getFileName().substring(img.getFileName().indexOf("."));
-        File path = new File("upload\\avatar");
+        File path = new File("D:\\MusicUserData\\upload\\avatar");
         if (!path.exists()) {
             flag = path.mkdirs();
         }
-        String fileName = "upload\\avatar\\" + img.getAccount() + "_avatar" + fileFormat;
+        String fileName = "D:\\MusicUserData\\upload\\avatar\\" + img.getAccount() + "_avatar" + fileFormat;
         File imgFile = new File(fileName);
         flag = true;
         if (!imgFile.exists()) {
