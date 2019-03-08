@@ -13,5 +13,5 @@
 
 <%
     System.out.println("user method");
-    RequestProcessUtils.processUserRequest(request, out);
+    RequestProcessUtils.processUserRequest(request, out, application);
 %>

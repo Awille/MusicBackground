@@ -11,6 +11,7 @@ import commonconstant.CommonConstant;
 import database.DbConnectManager;
 import database.crud.UserCrud;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 import java.io.BufferedReader;
@@ -22,10 +23,12 @@ import java.util.concurrent.FutureTask;
 public class UserTask implements Callable<Boolean> {
     private HttpServletRequest myRequest;
     private JspWriter myOut;
+    private ServletContext myContext;
 
-    public UserTask(HttpServletRequest myRequest, JspWriter myOut) {
+    public UserTask(HttpServletRequest myRequest, JspWriter myOut, ServletContext myContext) {
         this.myRequest = myRequest;
         this.myOut = myOut;
+        this.myContext = myContext;
     }
 
     @Override
@@ -184,7 +187,7 @@ public class UserTask implements Callable<Boolean> {
     private Boolean modifyUserAvatar(String data, DruidPooledConnection connection) throws IOException{
         JSONObject jsonObject = JSON.parseObject(data);
         UploadFile uploadFile = JSON.parseObject(jsonObject.get("uploadFile").toString(), UploadFile.class);
-        boolean result = UserCrud.uploadUserAvatar(uploadFile, connection);
+        boolean result = UserCrud.uploadUserAvatar(uploadFile, connection, myContext);
         if (result) {
             myOut.print(JSON.toJSON(
                     new Message(CommonConstant.Result.SUCCESS_CODE,

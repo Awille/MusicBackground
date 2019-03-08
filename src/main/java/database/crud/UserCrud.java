@@ -8,6 +8,7 @@ import sun.misc.BASE64Decoder;
 import utils.EncryptUtils;
 import utils.TextUtils;
 
+import javax.servlet.ServletContext;
 import java.io.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -241,7 +242,7 @@ public class UserCrud {
      * @param img
      * @return 文件路径
      */
-    private static String saveUserAvatar(UploadFile img) {
+    private static String saveUserAvatar(UploadFile img, ServletContext servletContext) {
         boolean flag = false;
         byte[] bytes = null;
         try {
@@ -256,11 +257,11 @@ public class UserCrud {
         }
         flag = false;
         String fileFormat = img.getFileName().substring(img.getFileName().indexOf("."));
-        File path = new File("D:\\MusicUserData\\upload\\avatar");
+        File path = new File(servletContext.getRealPath("/") + "\\upload\\avatar");
         if (!path.exists()) {
             flag = path.mkdirs();
         }
-        String fileName = "D:\\MusicUserData\\upload\\avatar\\" + img.getAccount() + "_avatar" + fileFormat;
+        String fileName = servletContext.getRealPath("/") + "\\upload\\avatar\\" + img.getAccount() + "_avatar" + fileFormat;
         File imgFile = new File(fileName);
         flag = true;
         if (!imgFile.exists()) {
@@ -301,8 +302,8 @@ public class UserCrud {
      * @param connection
      * @return 图片上传结果
      */
-    public static boolean uploadUserAvatar(UploadFile file, DruidPooledConnection connection) {
-        String avatarUrl = saveUserAvatar(file);
+    public static boolean uploadUserAvatar(UploadFile file, DruidPooledConnection connection, ServletContext servletContext) {
+        String avatarUrl = saveUserAvatar(file, servletContext);
         if (avatarUrl == null) {
             return false;
         }
