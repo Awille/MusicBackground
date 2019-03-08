@@ -23,6 +23,14 @@ public class Song implements Serializable {
      * 歌曲名称
      */
     private String name;
+    /**
+     * 歌曲头像
+     */
+    private String avatarUrl;
+    /**
+     * 歌曲资源地址
+     */
+    private String resourceUrl;
 
     public long getSongId() {
         return songId;
@@ -62,5 +70,21 @@ public class Song implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getResourceUrl() {
+        return resourceUrl;
+    }
+
+    public void setResourceUrl(String resourceUrl) {
+        this.resourceUrl = resourceUrl;
     }
 }

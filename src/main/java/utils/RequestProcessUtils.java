@@ -21,5 +21,9 @@ public class RequestProcessUtils {
         }
     }
 
+    public static void processSongRequest(HttpServletRequest request, JspWriter out, ServletContext context) {
+
+    }
+
 
 }
