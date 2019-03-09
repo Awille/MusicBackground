@@ -37,7 +37,7 @@ public class SongTask implements Callable<Boolean> {
         if (myRequest.getMethod().equalsIgnoreCase("GET")) {
             return querySong(connection);
         } else if (myRequest.getMethod().equalsIgnoreCase("POST")) {
-
+            return processInput(connection);
         }
         connection.close();
         return false;
@@ -67,7 +67,7 @@ public class SongTask implements Callable<Boolean> {
                     result = uploadLyricResource(data, connection);
                     break;
                 case "203":
-                    result = addSong(connection);
+                    result = addSong(data, connection);
                     break;
             }
             return result;
@@ -77,21 +77,11 @@ public class SongTask implements Callable<Boolean> {
         return false;
     }
 
-    private boolean addSong (DruidPooledConnection connection) {
-        StringBuffer stringBuffer = new StringBuffer();
-        String line = null;
-        String body = null;
-        BufferedReader bufferedReader = null;
+    private boolean addSong (String data, DruidPooledConnection connection) {
+        JSONObject jsonObject = JSON.parseObject(data);
+        Song song = JSON.parseObject(jsonObject.get("song").toString(), Song.class);
+        Song result = SongCrud.addSong(song, connection);
         try {
-            bufferedReader = myRequest.getReader();
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuffer.append(line);
-            }
-            body = stringBuffer.toString();
-            JSONObject first = JSON.parseObject(body);
-            JSONObject second = JSON.parseObject(first.getString("data").toString());
-            Song song = JSON.parseObject(second.getString("song"), Song.class);
-            Song result = SongCrud.addSong(song, connection);
             if (result != null) {
                 myOut.print(JSON.toJSON(
                         new Message(CommonConstant.Result.SUCCESS_CODE,
@@ -106,7 +96,7 @@ public class SongTask implements Callable<Boolean> {
                 return false;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
         return false;
     }

@@ -42,7 +42,7 @@ public class SongCrud {
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
                 //补充主键信息
                 if (resultSet.next()) {
-                    song.setSongId(resultSet.getLong("song_id"));
+                    song.setSongId(resultSet.getLong(1));
                 }
                 return song;
             } else {
@@ -208,11 +208,11 @@ public class SongCrud {
      * @return 返回文件名
      */
     public static String saveSongResource(UploadFile uploadFile, ServletContext servletContext) {
-        return FileUtils.saveFile(uploadFile, servletContext, "\\upload\\song", "song");
+        return FileUtils.saveFile(uploadFile, servletContext, "upload\\song\\", "song");
     }
 
     public static String saveLyricResource(UploadFile uploadFile, ServletContext servletContext) {
-        return FileUtils.saveFile(uploadFile, servletContext, "\\upload\\lyric", "lyric");
+        return FileUtils.saveFile(uploadFile, servletContext, "upload\\lyric\\", "lyric");
     }
 
 

@@ -78,3 +78,7 @@ service 203 : 歌曲基本信息
 Tomcat好像是个多机主实例的web容器，路径必须要唯一
 
 为了解决这个问题，目前把用户上传的图片，歌曲等内容放到 "项目upload文件夹"目录下
+
+### 6、编码问题 中文乱码问题
+request.setCharacterEncoding("utf-8");
+记得加这句，还有在tomcat的server.xml中添加URIEncoding = urf-8

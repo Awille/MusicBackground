@@ -14,7 +14,7 @@ public class FileUtils {
      * 存储文件工具方法
      * @param uploadFile 上传你的文件类
      * @param servletContext 上下文
-     * @param filePath 相对路径 如 "\\upload\\avatar"
+     * @param filePath 相对路径 如 "upload\\avatar\\"
      * @param fileTypeName 文件类型名 如 "avatar"
      * @return
      */
@@ -54,7 +54,7 @@ public class FileUtils {
         try {
             fileOutputStream = new FileOutputStream(fileName);
             fileOutputStream.write(bytes);
-            return  fileName;
+            return  filePath + uploadFile.getAccount() + "_" + fileTypeName + fileFormat;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
