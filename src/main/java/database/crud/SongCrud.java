@@ -215,6 +215,10 @@ public class SongCrud {
         return FileUtils.saveFile(uploadFile, servletContext, "upload\\lyric\\", "lyric");
     }
 
+    public static String saveSongAvatar(UploadFile uploadFile, ServletContext servletContext) {
+        return FileUtils.saveFile(uploadFile, servletContext, "upload\\songavatar\\", "songavatar");
+    }
+
 
 
 

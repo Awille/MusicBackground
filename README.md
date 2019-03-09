@@ -59,6 +59,7 @@ word进行模糊查询 两个key不能同时为非null，查询时以非null
 service 201 : 歌曲文件
 service 202 : 歌词文件
 service 203 : 歌曲基本信息
+service 204 : 上传歌曲头像
 
 - PUT DELETE 歌曲信息更新 删除操作不开放
 

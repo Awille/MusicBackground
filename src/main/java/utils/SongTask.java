@@ -69,6 +69,9 @@ public class SongTask implements Callable<Boolean> {
                 case "203":
                     result = addSong(data, connection);
                     break;
+                case "204":
+                    result = uloadSongAvatar(data, connection);
+                    break;
             }
             return result;
         } catch (IOException e) {
@@ -76,6 +79,7 @@ public class SongTask implements Callable<Boolean> {
         }
         return false;
     }
+
 
     private boolean addSong (String data, DruidPooledConnection connection) {
         JSONObject jsonObject = JSON.parseObject(data);
@@ -115,6 +119,25 @@ public class SongTask implements Callable<Boolean> {
             myOut.print(JSON.toJSON(new Message(
                     CommonConstant.Result.FAIL_CODE,
                     "上传歌词失败",
+                    null)));
+            return false;
+        }
+    }
+
+    private boolean uloadSongAvatar(String data, DruidPooledConnection connection) throws IOException {
+        JSONObject jsonObject = JSON.parseObject(data);
+        UploadFile uploadFile = JSON.parseObject(jsonObject.get("uploadFile").toString(), UploadFile.class);
+        String fileUrl = SongCrud.saveSongAvatar(uploadFile, myContext);
+        if (fileUrl != null) {
+            myOut.print(JSON.toJSON(new Message(
+                    CommonConstant.Result.SUCCESS_CODE,
+                    CommonConstant.Result.SUCCESS_MSG,
+                    fileUrl)));
+            return true;
+        } else {
+            myOut.print(JSON.toJSON(new Message(
+                    CommonConstant.Result.FAIL_CODE,
+                    "上传歌曲头像失败",
                     null)));
             return false;
         }
