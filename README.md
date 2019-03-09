@@ -64,6 +64,19 @@ service 204 : 上传歌曲头像
 - PUT DELETE 歌曲信息更新 删除操作不开放
 
 #### 4.3 SONGLIST 设计
+- GET
+两个参数 account 与 songListId
+两个参数不能同时不为null
+account 查询用户的歌单列表
+songListId用户查询每个具体的歌单信息
+- POST
+新增歌单
+- PUT
+service 301 : 更改歌单信息
+service 302 : 添加歌曲到歌单
+service 303 ：从歌单中删除歌曲
+- DELETE
+删除歌单
 
 
 #### 4.4 COMMENT 设计
