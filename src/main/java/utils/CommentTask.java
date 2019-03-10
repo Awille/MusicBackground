@@ -5,6 +5,7 @@ import bean.Message;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONPObject;
 import commonconstant.CommonConstant;
 import database.DbConnectManager;
 import database.crud.CommentCrud;
@@ -39,9 +40,52 @@ public class CommentTask implements Callable<Boolean> {
             result = addComment(connection);
         } else if (myRequest.getMethod().equalsIgnoreCase("DELETE")) {
             result = deleteComment(connection);
+        } else if (myRequest.getMethod().equalsIgnoreCase("PUT")) {
+            result = prcocessPut(connection);
         }
         connection.close();
         return result;
+    }
+
+    private boolean prcocessPut(DruidPooledConnection connection) {
+        StringBuffer stringBuffer = new StringBuffer();
+        String line = null;
+        String body = null;
+        BufferedReader bufferedReader = null;
+        try {
+            bufferedReader = myRequest.getReader();
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuffer .append(line);
+            }
+            body = stringBuffer.toString();
+            JSONObject first = JSON.parseObject(body);
+            String service = first.getString("service");
+            JSONObject second = JSON.parseObject(first.getString("data"));
+            long commentId = second.getLong("commentId");
+            boolean result = false;
+            if (service.equals("401")) {
+                result = CommentCrud.increLike(commentId, connection);
+            } else {
+                result = CommentCrud.increDislike(commentId, connection);
+            }
+            if (result) {
+                myOut.print(JSON.toJSON(new Message(CommonConstant.Result.SUCCESS_CODE,
+                        CommonConstant.Result.SUCCESS_MSG, null)));
+            } else {
+                myOut.print(JSON.toJSON(new Message(CommonConstant.Result.FAIL_CODE,
+                        "操作失败", null)));
+            }
+            return result;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 
     private boolean deleteComment(DruidPooledConnection connection) {

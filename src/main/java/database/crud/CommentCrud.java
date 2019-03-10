@@ -23,14 +23,13 @@ public class CommentCrud {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(
-                    "INSERT INTO music.comment (content, user_id, song_id, reply_comment_id, `like`, dislike) VALUES (?, ?, ?, ?, ?, ?)",
+                    "INSERT INTO music.comment (content, user_id, song_id, reply_comment_id, comment_level) VALUES (?, ?, ?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, comment.getContent());
             preparedStatement.setLong(2, comment.getUserId());
             preparedStatement.setLong(3, comment.getSongId());
             preparedStatement.setLong(4, comment.getReplyCommentId());
-            preparedStatement.setLong(5, comment.getLike());
-            preparedStatement.setLong(6, comment.getDislike());
+            preparedStatement.setLong(5, comment.getCommentLevel());
             if (preparedStatement.executeUpdate() > 0) {
                 //更新成功后 添加相关评论数量
                 if (comment.getReplyCommentId() != 0) {
@@ -38,7 +37,7 @@ public class CommentCrud {
                 }
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
                 if (resultSet.next()) {
-                    comment.setCommentId(resultSet.getLong("comment_id"));
+                    comment.setCommentId(resultSet.getLong(1));
                 }
                 resultSet.close();
                 return comment;
@@ -201,7 +200,10 @@ public class CommentCrud {
                 if (comment.getReplyCommentId() != 0) {
                     Comment commentInComment = queryCommentByCommentId(comment.getReplyCommentId(), connection);
                     if (commentInComment != null) {
-                        comment.setReplyComment(commentInComment);
+                        //如果是不是顶级评论 则加入
+                        if (commentInComment.getCommentLevel() != 0) {
+                            comment.setReplyComment(commentInComment);
+                        }
                     }
                 }
                 comments.add(comment);
@@ -222,6 +224,7 @@ public class CommentCrud {
 
     /**
      * 删除评论 非真正意义上的删除 只是将评论的内容设为null
+     * 端上返回记得先判断content是否为null，然后评论数量再决定要不要显示
      * @param commentId
      * @param connection
      * @return 删除结果
@@ -234,6 +237,52 @@ public class CommentCrud {
             preparedStatement.setLong(1, commentId);
             if (preparedStatement.executeUpdate() > 0) {
                 return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public static boolean increLike(long commentId, DruidPooledConnection connection) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "UPDATE music.comment SET `like` = `like` + 1 WHERE comment_id = ?");
+            preparedStatement.setLong(1, commentId);
+            if (preparedStatement.executeUpdate() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public static boolean increDislike(long commentId, DruidPooledConnection connection) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "UPDATE music.comment SET dislike = dislike + 1 WHERE comment_id = ?");
+            preparedStatement.setLong(1, commentId);
+            if (preparedStatement.executeUpdate() > 0) {
+                return true;
+            } else {
+                return false;
             }
         } catch (SQLException e) {
             e.printStackTrace();

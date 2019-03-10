@@ -95,6 +95,11 @@ data中传入comment实例进行评论添加
 
 - PUT 
 更新评论 不允许
+service:
+401 增加点赞数 
+402 增加踩数量
+
+data传入commentId就好了
 
 - DELETE 
 删除评论 传入commentId
