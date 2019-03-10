@@ -73,14 +73,57 @@ public class SongListTask implements Callable<Boolean> {
                     result = updateSongListName(data, connection);
                     break;
                 case "303":
-
+                    result = addSongToSongList(data, connection);
                     break;
                 case "304":
-
+                    result = deleteSongFromSongList(data, connection);
                     break;
             }
+            return result;
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
+    private boolean deleteSongFromSongList(String data, DruidPooledConnection connection) {
+        JSONObject jsonObject = JSON.parseObject(data);
+        long songId = jsonObject.getLong("songId");
+        long songListId = jsonObject.getLong("songListId");
+        boolean result = SongListCrud.deleteSongFromSongList(songListId, songId, connection);
+        try {
+            if (result) {
+                myOut.print(JSON.toJSON(new Message(CommonConstant.Result.SUCCESS_CODE,
+                        CommonConstant.Result.SUCCESS_MSG, null)));
+                return true;
+            } else {
+                myOut.print(JSON.toJSON(new Message(CommonConstant.Result.FAIL_CODE,
+                        "删除失败", null)));
+                return false;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private boolean addSongToSongList(String data, DruidPooledConnection connection) {
+        JSONObject jsonObject = JSON.parseObject(data);
+        long songId = jsonObject.getLong("songId");
+        long songListId = jsonObject.getLong("songListId");
+        boolean result = SongListCrud.addSongToSongList(songId, songListId, connection);
+        try {
+            if (result) {
+                myOut.print(JSON.toJSON(new Message(CommonConstant.Result.SUCCESS_CODE,
+                        CommonConstant.Result.SUCCESS_MSG, null)));
+                return true;
+            } else {
+                myOut.print(JSON.toJSON(new Message(CommonConstant.Result.FAIL_CODE,
+                        "添加失败", null)));
+                return false;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return false;
     }

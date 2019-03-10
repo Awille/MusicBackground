@@ -75,7 +75,7 @@ data 传入  name 与 userId
 - PUT
 service 301 : 更改歌单头像  upload中account字段传songListId
 service 302 : 更改歌单基本信息 更改歌单名称 data中传入 songListId, name即可
-service 303 : 添加歌曲到歌单
+service 303 : 添加歌曲到歌单 data中传入 songListId, songId
 service 304 ：从歌单中删除歌曲
 - DELETE
 删除歌单

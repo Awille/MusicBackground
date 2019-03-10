@@ -272,7 +272,7 @@ public class SongListCrud {
      * @param connection
      * @return 删除结果
      */
-    public static boolean deleteSongListInRelation(long songListId, DruidPooledConnection connection) {
+    private static boolean deleteSongListInRelation(long songListId, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(
@@ -373,6 +373,24 @@ public class SongListCrud {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+        return false;
+    }
+
+    public static boolean deleteSongFromSongList(long songListId, long songId, DruidPooledConnection connection) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "DELETE FROM music.songlist_song_relation WHERE song_list_id = ? AND song_id = ?");
+            preparedStatement.setLong(1, songListId);
+            preparedStatement.setLong(2, songId);
+            if (preparedStatement.executeUpdate() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return false;
     }
