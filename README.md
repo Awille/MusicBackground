@@ -114,3 +114,7 @@ Tomcat好像是个多机主实例的web容器，路径必须要唯一
 ### 6、编码问题 中文乱码问题
 request.setCharacterEncoding("utf-8");
 记得加这句，还有在tomcat的server.xml中添加URIEncoding = urf-8
+
+
+### 7、有关请求发起的时候的身份校验问题
+全部放到端上去做

@@ -45,5 +45,9 @@ public class RequestProcessUtils {
         }
     }
 
+    public static void processCommentRequest(HttpServletRequest request, JspWriter out, ServletContext context) {
+
+    }
+
 
 }
