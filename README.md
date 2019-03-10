@@ -61,7 +61,8 @@ service 202 : 歌词文件
 service 203 : 歌曲基本信息
 service 204 : 上传歌曲头像
 
-- PUT DELETE 歌曲信息更新 删除操作不开放
+- PUT DELETE 歌曲信息更新 删除操作不开放 
+没有body 参数中直接传入 songListId
 
 #### 4.3 SONGLIST 设计
 - GET
@@ -78,7 +79,7 @@ service 302 : 更改歌单基本信息 更改歌单名称 data中传入 songList
 service 303 : 添加歌曲到歌单 data中传入 songListId, songId
 service 304 ：从歌单中删除歌曲
 - DELETE
-删除歌单
+删除歌单 data中传入songListId
 
 
 #### 4.4 COMMENT 设计

@@ -44,10 +44,29 @@ public class SongListTask implements Callable<Boolean> {
         } else if (myRequest.getMethod().equalsIgnoreCase("GET")) {
             result = processGet(connection);
         } else if (myRequest.getMethod().equalsIgnoreCase("DELETE")) {
-
+            result = deleteSongListBySongListId(connection);
         }
         connection.close();
-        return null;
+        return result;
+    }
+
+    private boolean deleteSongListBySongListId(DruidPooledConnection connection) {
+        String songListIdStr = myRequest.getParameter("songListId");
+        long songListId = Long.parseLong(songListIdStr);
+        try {
+            if (SongListCrud.deleteSongListDirectly(songListId, connection)) {
+                myOut.print(JSON.toJSON(new Message(CommonConstant.Result.SUCCESS_CODE,
+                        CommonConstant.Result.SUCCESS_MSG, null)));
+                return true;
+            }  else {
+                myOut.print(JSON.toJSON(new Message(CommonConstant.Result.FAIL_CODE,
+                        "删除失败", null)));
+                return false;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     private boolean processPut(DruidPooledConnection connection) {

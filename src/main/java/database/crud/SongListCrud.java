@@ -173,48 +173,12 @@ public class SongListCrud {
 
 
     /**
-     * 删除歌单
-     * 1、先缓存关系表中的歌单 2、先删除关系表中的歌单记录 3、删除歌单
-     * 任何一步出现错误，都要进行回退数据库
-     * @param songListId 歌单ID
-     * @param connection
-     * @return 删除歌单是否成功
-     */
-    public static boolean deleteSongList(long songListId, DruidPooledConnection connection) {
-        //先缓存关系表中的歌单
-        List<Long> songIdList = getSongIdsBySongListId(songListId, connection);
-        //回退失败的数据
-        List<Long> failBackSongId = new ArrayList<Long>();
-        if (songIdList == null) {
-            return false;
-        }
-        if (!deleteSongListInRelation(songListId, connection)) {
-            return false;
-        }
-        //删除歌单失败
-        if (!deleteSongListDirectly(songListId, connection)) {
-            //用缓存回退数据
-            for (Long songId : songIdList) {
-                if (!addSongToSongList(songId, songListId, connection)) {
-                    failBackSongId.add(songId);
-                }
-            }
-            //如果有失败的回退数据
-            if (failBackSongId.size() > 0) {
-
-            }
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * 直接删除歌单
      * @param songListId
      * @param connection
      * @return
      */
-    private static boolean deleteSongListDirectly(long songListId, DruidPooledConnection connection) {
+    public static boolean deleteSongListDirectly(long songListId, DruidPooledConnection connection) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(
@@ -241,7 +205,7 @@ public class SongListCrud {
      * @param connection
      * @return
      */
-    private static List<Long> getSongIdsBySongListId(long songListId, DruidPooledConnection connection) {
+    public static List<Long> getSongIdsBySongListId(long songListId, DruidPooledConnection connection) {
         List<Long> userIdList = new ArrayList<Long>();
         PreparedStatement preparedStatement = null;
         try {
@@ -266,32 +230,6 @@ public class SongListCrud {
         return null;
     }
 
-    /**
-     * 在歌单 歌曲关信息表中删除
-     * @param songListId
-     * @param connection
-     * @return 删除结果
-     */
-    private static boolean deleteSongListInRelation(long songListId, DruidPooledConnection connection) {
-        PreparedStatement preparedStatement = null;
-        try {
-            preparedStatement = connection.prepareStatement(
-                    "DELETE FROM music.songlist_song_relation WHERE song_list_id = ?");
-            preparedStatement.setLong(1, songListId);
-            if (preparedStatement.executeUpdate() > 0) {
-                return true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                preparedStatement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return false;
-    }
 
     /**
      * 歌单中添加歌曲
