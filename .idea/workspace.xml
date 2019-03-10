@@ -6,7 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="586bc6b8-a244-4cee-93ae-6a011261709a" name="Default Changelist" comment="" />
+    <list default="true" id="586bc6b8-a244-4cee-93ae-6a011261709a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,7 +83,7 @@
           <entry key="jsp" value="29" />
           <entry key="md" value="17" />
           <entry key="properties" value="4" />
-          <entry key="sql" value="4" />
+          <entry key="sql" value="8" />
           <entry key="user" value="1" />
           <entry key="xml" value="13" />
         </counts>
@@ -95,7 +97,7 @@
           <entry key="JSP" value="29" />
           <entry key="Markdown" value="17" />
           <entry key="Properties" value="4" />
-          <entry key="SQL" value="3" />
+          <entry key="SQL" value="7" />
           <entry key="Scratch" value="1" />
           <entry key="UML" value="1" />
           <entry key="XML" value="13" />
@@ -106,7 +108,7 @@
           <entry key="dummy" value="59" />
           <entry key="java" value="23613" />
           <entry key="jsp" value="1631" />
-          <entry key="md" value="2363" />
+          <entry key="md" value="2381" />
           <entry key="properties" value="19" />
           <entry key="xml" value="64" />
         </counts>
@@ -115,7 +117,7 @@
         <counts>
           <entry key="JAVA" value="23607" />
           <entry key="JSP" value="1631" />
-          <entry key="Markdown" value="2363" />
+          <entry key="Markdown" value="2381" />
           <entry key="PLAIN_TEXT" value="59" />
           <entry key="Properties" value="19" />
           <entry key="SQL" value="6" />
@@ -150,11 +152,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/SongTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1045">
-              <caret line="92" column="53" selection-start-line="92" selection-start-column="53" selection-end-line="92" selection-end-column="53" />
+            <state relative-caret-position="438">
+              <caret line="281" column="5" lean-forward="true" selection-start-line="281" selection-start-column="5" selection-end-line="281" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,34 +164,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bean/Comment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="135" column="16" selection-start-line="135" selection-start-column="16" selection-end-line="135" selection-end-column="16" />
-              <folding>
-                <element signature="e#2396#2397#0" expanded="true" />
-                <element signature="e#2444#2445#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/restful/user.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="314">
-                <caret line="101" column="18" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
+              <first_editor relative-caret-position="380">
+                <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
               </first_editor>
               <second_editor />
             </state>
@@ -318,12 +298,12 @@
         <option value="$PROJECT_DIR$/src/main/java/database/crud/SongListCrud.java" />
         <option value="$PROJECT_DIR$/web/restful/comment.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/utils/RequestProcessUtils.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/database/crud/CommentCrud.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/UserTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/CommentTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/SongListTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/SongTask.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -670,7 +650,7 @@
     <property name="SearchEverywhereHistoryKey" value="reque&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/RequestProcessUtils.java&#10;SongC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongCrud.java&#10;Song&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/bean/Song.java&#10;SongListC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongListCrud.java&#10;songC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongCrud.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552223687450" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552224703546" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -685,6 +665,7 @@
       <recent name="bean.songlist" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\MusicBackground\src\main\java\sql" />
       <recent name="D:\IdeaProjects\MusicBackground\src\sql" />
     </key>
   </component>
@@ -807,12 +788,12 @@
       <workItem from="1552109211367" duration="1648000" />
       <workItem from="1552111970544" duration="10221000" />
       <workItem from="1552136679635" duration="4011000" />
-      <workItem from="1552187429429" duration="16843000" />
+      <workItem from="1552187429429" duration="17671000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180837000" />
+    <option name="totallyTimeSpent" value="181665000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -856,7 +837,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Database" order="5" visible="true" weight="0.18498659" />
+      <window_info anchor="right" id="Database" order="5" weight="0.18498659" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" weight="0.3297587" />
@@ -922,21 +903,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/TextUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Properties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="339" column="29" selection-start-line="339" selection-start-column="29" selection-end-line="339" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties" />
     <entry file="file://$PROJECT_DIR$/src/main/java/deprecateddbconnect/DatabaseConnectManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="931">
@@ -1226,16 +1192,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="314">
-            <caret line="101" column="18" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/UserTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -1266,13 +1222,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sql/song.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-350" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sql/comment.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-673" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sql/songlist_song_relation.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/SongTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1045">
-          <caret line="92" column="53" selection-start-line="92" selection-start-column="53" selection-end-line="92" selection-end-column="53" />
+        <state relative-caret-position="438">
+          <caret line="281" column="5" lean-forward="true" selection-start-line="281" selection-start-column="5" selection-end-line="281" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="380">
+            <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
