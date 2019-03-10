@@ -41,6 +41,7 @@ public class CommentCrud {
                     comment.setCommentId(resultSet.getLong("comment_id"));
                 }
                 resultSet.close();
+                return comment;
             } else {
                 return null;
             }
@@ -116,6 +117,7 @@ public class CommentCrud {
                 comments.add(comment);
             }
             resultSet.close();
+            return comments;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -125,7 +127,7 @@ public class CommentCrud {
                 e.printStackTrace();
             }
         }
-        return comments;
+        return null;
     }
 
     /**
@@ -205,6 +207,7 @@ public class CommentCrud {
                 comments.add(comment);
             }
             resultSet.close();
+            return comments;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -214,7 +217,7 @@ public class CommentCrud {
                 e.printStackTrace();
             }
         }
-        return comments;
+        return null;
     }
 
     /**

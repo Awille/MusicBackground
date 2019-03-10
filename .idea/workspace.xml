@@ -7,11 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="586bc6b8-a244-4cee-93ae-6a011261709a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/CommentTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/restful/comment.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/RequestProcessUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/RequestProcessUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/crud/CommentCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/crud/CommentCrud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommentTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommentTask.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -83,9 +81,9 @@
           <entry key="0-SNAPSHOT" value="1" />
           <entry key="class" value="12" />
           <entry key="iml" value="1" />
-          <entry key="java" value="123" />
+          <entry key="java" value="126" />
           <entry key="jsp" value="28" />
-          <entry key="md" value="15" />
+          <entry key="md" value="16" />
           <entry key="properties" value="4" />
           <entry key="sql" value="4" />
           <entry key="user" value="1" />
@@ -97,9 +95,9 @@
           <entry key="CLASS" value="12" />
           <entry key="Database Element" value="1" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="123" />
+          <entry key="JAVA" value="126" />
           <entry key="JSP" value="28" />
-          <entry key="Markdown" value="15" />
+          <entry key="Markdown" value="16" />
           <entry key="Properties" value="4" />
           <entry key="SQL" value="3" />
           <entry key="Scratch" value="1" />
@@ -110,7 +108,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="59" />
-          <entry key="java" value="21689" />
+          <entry key="java" value="22515" />
           <entry key="jsp" value="1631" />
           <entry key="md" value="2294" />
           <entry key="properties" value="19" />
@@ -119,7 +117,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="21683" />
+          <entry key="JAVA" value="22509" />
           <entry key="JSP" value="1631" />
           <entry key="Markdown" value="2294" />
           <entry key="PLAIN_TEXT" value="59" />
@@ -135,7 +133,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/UserTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3137">
+            <state relative-caret-position="2282">
               <caret line="190" column="41" selection-start-line="190" selection-start-column="41" selection-end-line="190" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -145,10 +143,14 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/CommentCrud.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bean/Comment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-855">
-              <caret line="177" column="66" selection-start-line="177" selection-start-column="57" selection-end-line="177" selection-end-column="66" />
+            <state relative-caret-position="1140">
+              <caret line="135" column="16" selection-start-line="135" selection-start-column="16" selection-end-line="135" selection-end-column="16" />
+              <folding>
+                <element signature="e#2396#2397#0" expanded="true" />
+                <element signature="e#2444#2445#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -165,11 +167,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/CommentTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="34" column="11" lean-forward="true" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+            <state relative-caret-position="419">
+              <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/CommentCrud.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -229,7 +240,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/db_server.properties" />
         <option value="$PROJECT_DIR$/src/main/java/database/DbConnectManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/deprecateddbconnect/DatabaseConnectManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/crud/CommentCrud.java" />
         <option value="$PROJECT_DIR$/web/restful/uploadutils.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/bean/Comment.java" />
         <option value="$PROJECT_DIR$/src/main/java/bean/requestmessage/RequestBean.java" />
@@ -257,6 +267,7 @@
         <option value="$PROJECT_DIR$/src/main/java/utils/RequestProcessUtils.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/web/restful/comment.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/database/crud/CommentCrud.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/CommentTask.java" />
       </list>
     </option>
@@ -306,8 +317,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-180" />
-    <option name="y" value="75" />
+    <option name="x" value="355" />
+    <option name="y" value="175" />
     <option name="width" value="1750" />
     <option name="height" value="970" />
   </component>
@@ -604,7 +615,7 @@
     <property name="SearchEverywhereHistoryKey" value="reque&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/RequestProcessUtils.java&#10;SongC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongCrud.java&#10;Song&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/bean/Song.java&#10;SongListC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongListCrud.java&#10;songC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongCrud.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552199211062" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552220215379" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -741,12 +752,12 @@
       <workItem from="1552109211367" duration="1648000" />
       <workItem from="1552111970544" duration="10221000" />
       <workItem from="1552136679635" duration="4011000" />
-      <workItem from="1552187429429" duration="10326000" />
+      <workItem from="1552187429429" duration="13390000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174320000" />
+    <option name="totallyTimeSpent" value="177384000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -856,13 +867,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/sql/PreparedStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="76" column="14" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/TextUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -903,13 +907,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
           <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bean/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="4" column="45" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1145,16 +1142,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="437">
-            <caret line="119" column="8" selection-start-line="119" selection-start-column="8" selection-end-line="119" selection-end-column="8" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/RequestProcessUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="481">
@@ -1179,9 +1166,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bean/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="135" column="16" selection-start-line="135" selection-start-column="16" selection-end-line="135" selection-end-column="16" />
+          <folding>
+            <element signature="e#2396#2397#0" expanded="true" />
+            <element signature="e#2444#2445#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/sql/PreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="180" column="9" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="779">
+            <caret line="119" column="8" selection-start-line="119" selection-start-column="8" selection-end-line="119" selection-end-column="8" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/UserTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3137">
+        <state relative-caret-position="2282">
           <caret line="190" column="41" selection-start-line="190" selection-start-column="41" selection-end-line="190" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1191,15 +1206,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/CommentCrud.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-855">
-          <caret line="177" column="66" selection-start-line="177" selection-start-column="57" selection-end-line="177" selection-end-column="66" />
+        <state relative-caret-position="361">
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/CommentTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="34" column="11" lean-forward="true" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+        <state relative-caret-position="419">
+          <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
