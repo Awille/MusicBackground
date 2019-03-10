@@ -114,8 +114,9 @@ public class CommentTask implements Callable<Boolean> {
         StringBuffer stringBuffer = new StringBuffer();
         String line = null;
         String body = null;
+        BufferedReader bufferedReader = null;
         try {
-            BufferedReader bufferedReader = myRequest.getReader();
+            bufferedReader = myRequest.getReader();
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuffer.append(line);
             }
@@ -135,6 +136,12 @@ public class CommentTask implements Callable<Boolean> {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

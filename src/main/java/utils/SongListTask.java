@@ -101,6 +101,12 @@ public class SongListTask implements Callable<Boolean> {
             return result;
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -223,6 +229,12 @@ public class SongListTask implements Callable<Boolean> {
 
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

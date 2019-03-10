@@ -77,6 +77,12 @@ public class SongTask implements Callable<Boolean> {
             return result;
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
