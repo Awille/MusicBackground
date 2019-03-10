@@ -126,3 +126,4 @@ request.setCharacterEncoding("utf-8");
 
 
 ### 8、数据库模型概览
+![数据库概览](https://github.com/Awille/MusicBackground/blob/master/database.png)
