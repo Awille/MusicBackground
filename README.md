@@ -84,6 +84,21 @@ service 304 ：从歌单中删除歌曲
 
 #### 4.4 COMMENT 设计
 
+- GET
+songId : 根据歌单查询顶级评论
+commentId ：根据评论ID 查询评论
+replyCommentId ：根据回复评论ID 查询二级评论
+三者同时只有一个为非null
+
+- POST
+data中传入comment实例进行评论添加
+
+- PUT 
+更新评论 不允许
+
+- DELETE 
+删除评论 传入commentId
+
 
 
 
