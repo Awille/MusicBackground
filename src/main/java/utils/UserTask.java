@@ -34,15 +34,16 @@ public class UserTask implements Callable<Boolean> {
     @Override
     public Boolean call() throws Exception {
         DruidPooledConnection connection = DbConnectManager.getINSTANCE().getConnection();
+        boolean result = false;
         if (myRequest.getMethod().equalsIgnoreCase("GET")) {
-            return queryUserByAccount(connection);
+            result = queryUserByAccount(connection);
         } else if (myRequest.getMethod().equalsIgnoreCase("POST")) {
-            return addUser(connection);
+            result = addUser(connection);
         } else if (myRequest.getMethod().equalsIgnoreCase("PUT")) {
-            return processPut(connection);
+            result = processPut(connection);
         }
         connection.close();
-        return false;
+        return result;
     }
 
     private Boolean queryUserByAccount(DruidPooledConnection connection) {

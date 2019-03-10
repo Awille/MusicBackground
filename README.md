@@ -50,9 +50,9 @@ service 103 更改/上传 头像
 很大的影响。
 
 #### 4.2 SONG 设计
-- 查询歌曲信息 : GET方法 根据songId或者
-word关键词 进行查询
-word进行模糊查询 两个key不能同时为非null，查询时以非null
+- 查询歌曲信息 : GET方法 根据songId或者 
+word关键词 或者author 进行查询
+word进行模糊查询 三个key不能同时为非null，查询时以非null
 的key决定查询方式
 
 - 歌曲上传 ：POST方法
@@ -65,16 +65,18 @@ service 204 : 上传歌曲头像
 
 #### 4.3 SONGLIST 设计
 - GET
-两个参数 account 与 songListId
+两个参数 userId 与 songListId
 两个参数不能同时不为null
 account 查询用户的歌单列表
 songListId用户查询每个具体的歌单信息
 - POST
-新增歌单
+service: 任意
+data 传入  name 与 userId
 - PUT
-service 301 : 更改歌单信息
-service 302 : 添加歌曲到歌单
-service 303 ：从歌单中删除歌曲
+service 301 : 更改歌单头像  upload中account字段传songListId
+service 302 : 更改歌单基本信息 更改歌单名称 data中传入 songListId, name即可
+service 303 : 添加歌曲到歌单
+service 304 ：从歌单中删除歌曲
 - DELETE
 删除歌单
 

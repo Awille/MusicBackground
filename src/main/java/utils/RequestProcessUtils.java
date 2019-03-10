@@ -33,5 +33,17 @@ public class RequestProcessUtils {
         }
     }
 
+    public static void processSongListRequest(HttpServletRequest request, JspWriter out, ServletContext context) {
+        FutureTask<Boolean> futureTask = new FutureTask<>(new SongListTask(request, out, context));
+        ThreadPoolService.requestExcutor.submit(futureTask);
+        try {
+            futureTask.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

@@ -34,13 +34,14 @@ public class SongTask implements Callable<Boolean> {
     @Override
     public Boolean call() throws Exception {
         DruidPooledConnection connection = DbConnectManager.getINSTANCE().getConnection();
+        boolean result = false;
         if (myRequest.getMethod().equalsIgnoreCase("GET")) {
-            return querySong(connection);
+            result = querySong(connection);
         } else if (myRequest.getMethod().equalsIgnoreCase("POST")) {
-            return processInput(connection);
+            result = processInput(connection);
         }
         connection.close();
-        return false;
+        return result;
     }
 
 
@@ -166,6 +167,7 @@ public class SongTask implements Callable<Boolean> {
     private boolean querySong(DruidPooledConnection connection) {
         String songIdStr = myRequest.getParameter("songId");
         String word = myRequest.getParameter("word");
+        String authorStr = myRequest.getParameter("author");
         if (songIdStr != null) {
             long songId = 0;
             boolean flag = true;
@@ -229,14 +231,45 @@ public class SongTask implements Callable<Boolean> {
                     e.printStackTrace();
                 }
             }
-        } else {
+        } else if (authorStr != null){
+            long author = 0;
+            boolean flag = true;
             try {
-                myOut.print(JSON.toJSON(new Message(
-                        CommonConstant.Result.FAIL_CODE,
-                        "查询失败",
-                        null)));
-            } catch (IOException e) {
+                author = Long.parseLong(authorStr);
+            } catch (NumberFormatException e) {
+                flag = false;
                 e.printStackTrace();
+            }
+            if (!flag) {
+                try {
+                    myOut.print(JSON.toJSON(new Message(
+                            CommonConstant.Result.FAIL_CODE,
+                            "查询上传歌曲失败",
+                            null)));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return false;
+            }
+            List<Song> songs = SongCrud.querySongByAuthor(author, connection);
+            if (songs != null) {
+                try {
+                    myOut.print(JSON.toJSON(new Message(
+                            CommonConstant.Result.SUCCESS_CODE,
+                            CommonConstant.Result.SUCCESS_MSG,
+                            songs)));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    myOut.print(JSON.toJSON(new Message(
+                            CommonConstant.Result.FAIL_CODE,
+                            "查询上传歌曲失败",
+                            null)));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         return false;

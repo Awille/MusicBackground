@@ -31,6 +31,10 @@ public class Song implements Serializable {
      * 歌曲资源地址
      */
     private String resourceUrl;
+    /**
+     * 作者
+     */
+    private long author;
 
     public long getSongId() {
         return songId;
@@ -86,5 +90,13 @@ public class Song implements Serializable {
 
     public void setResourceUrl(String resourceUrl) {
         this.resourceUrl = resourceUrl;
+    }
+
+    public long getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(long author) {
+        this.author = author;
     }
 }

@@ -30,14 +30,15 @@ public class SongCrud {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(
-                    "INSERT INTO music.song (lyric_url, album_name, singer, name, avatar_url, resource_url) " +
-                            "VALUE (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+                    "INSERT INTO music.song (lyric_url, album_name, singer, name, avatar_url, resource_url, author) " +
+                            "VALUE (?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, song.getLyricUrl() == null ? "" : song.getLyricUrl());
             preparedStatement.setString(2, song.getAlbumName() == null ? "无" : song.getAlbumName());
             preparedStatement.setString(3, song.getSinger() == null ? "佚名" : song.getSinger());
             preparedStatement.setString(4, song.getName());
             preparedStatement.setString(5, song.getAvatarUrl());
             preparedStatement.setString(6, song.getResourceUrl());
+            preparedStatement.setLong(7, song.getAuthor());
             if (preparedStatement.executeUpdate() > 0) {
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
                 //补充主键信息
@@ -48,6 +49,40 @@ public class SongCrud {
             } else {
                 return null;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    public static List<Song> querySongByAuthor(long author, DruidPooledConnection connection) {
+        List<Song> songs = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "SELECT  * FROM music.song WHERE author = ?");
+            preparedStatement.setLong(1, author);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Song song = new Song();
+                song.setAuthor(resultSet.getLong("author"));
+                song.setSongId(resultSet.getLong("song_id"));
+                song.setLyricUrl(resultSet.getString("lyric_url"));
+                song.setAlbumName(resultSet.getString("album_name"));
+                song.setSinger(resultSet.getString("singer"));
+                song.setName(resultSet.getString("name"));
+                song.setResourceUrl(resultSet.getString("resource_url"));
+                song.setAvatarUrl(resultSet.getString("avatar_url"));
+                songs.add(song);
+            }
+            resultSet.close();
+            return songs;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -83,6 +118,7 @@ public class SongCrud {
                 song.setName(resultSet.getString("name"));
                 song.setResourceUrl(resultSet.getString("resource_url"));
                 song.setAvatarUrl(resultSet.getString("avatar_url"));
+                song.setAuthor(resultSet.getLong("author"));
             }
             resultSet.close();
         } catch (SQLException e) {
@@ -122,6 +158,7 @@ public class SongCrud {
                 song.setName(resultSet.getString("name"));
                 song.setResourceUrl(resultSet.getString("resource_url"));
                 song.setAvatarUrl(resultSet.getString("avatar_url"));
+                song.setAuthor(resultSet.getLong("author"));
                 songs.add(song);
             }
             resultSet.close();
