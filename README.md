@@ -45,6 +45,7 @@ class request() {
 service 101 更改用户信息 
 service 102 更改密码
 service 103 更改/上传 头像
+service 104 密码验证 data传入account与password
 - 添加用户： POST
 - 删除用户：DELETE
 删除用户操作暂时不做，就算要做也只是采取一些特殊方式。
@@ -102,7 +103,6 @@ data中传入comment实例进行评论添加
 service:
 401 增加点赞数 
 402 增加踩数量
-
 data传入commentId就好了
 
 - DELETE 

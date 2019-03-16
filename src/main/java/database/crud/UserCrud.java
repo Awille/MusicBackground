@@ -265,4 +265,14 @@ public class UserCrud {
     }
 
 
+    public static User userLogin(String account, String password, DruidPooledConnection connection) {
+        User user = queryUserByAccount(account, connection);
+        if (EncryptUtils.verifyByMd5(password, user.getPassword())) {
+            return user;
+        } else {
+            return null;
+        }
+    }
+
+
 }

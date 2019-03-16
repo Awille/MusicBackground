@@ -145,6 +145,12 @@ public class UserTask implements Callable<Boolean> {
                 case "103":
                     result = modifyUserAvatar(data, connection);
                     break;
+                case "104":
+                    result = userLogin(data, connection);
+                    break;
+                default:
+                    myOut.print(JSON.toJSON(new Message(CommonConstant.Result.FAIL_CODE, "请求错误", null)));
+                    break;
             }
             return result;
         } catch (IOException e) {
@@ -157,6 +163,21 @@ public class UserTask implements Callable<Boolean> {
             }
         }
         return false;
+    }
+
+    private boolean userLogin(String data, DruidPooledConnection connection) throws IOException {
+        JSONObject jsonObject = JSON.parseObject(data);
+        JSONObject second = JSON.parseObject(jsonObject.getString("data"));
+        String account = second.getString("account");
+        String password = second.getString("password");
+        User user = UserCrud.userLogin(account, password, connection);
+        if (user != null) {
+            myOut.print(JSON.toJSON(new Message(CommonConstant.Result.SUCCESS_CODE, CommonConstant.Result.SUCCESS_MSG, user)));
+            return true;
+        } else {
+            myOut.print(JSON.toJSON(new Message(CommonConstant.Result.FAIL_CODE, "用户不存在或者密码错误", null)));
+            return false;
+        }
     }
 
     private Boolean updateUserInfo(String data, DruidPooledConnection connection) throws IOException{
