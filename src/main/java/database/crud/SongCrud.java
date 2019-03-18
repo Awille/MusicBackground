@@ -245,15 +245,15 @@ public class SongCrud {
      * @return 返回文件名
      */
     public static String saveSongResource(UploadFile uploadFile, ServletContext servletContext) {
-        return FileUtils.saveFile(uploadFile, servletContext, "upload\\song\\", "song");
+        return FileUtils.saveFile(uploadFile, servletContext, FileUtils.songPath, "song");
     }
 
     public static String saveLyricResource(UploadFile uploadFile, ServletContext servletContext) {
-        return FileUtils.saveFile(uploadFile, servletContext, "upload\\lyric\\", "lyric");
+        return FileUtils.saveFile(uploadFile, servletContext, FileUtils.lyricPath, "lyric");
     }
 
     public static String saveSongAvatar(UploadFile uploadFile, ServletContext servletContext) {
-        return FileUtils.saveFile(uploadFile, servletContext, "upload\\songavatar\\", "songavatar");
+        return FileUtils.saveFile(uploadFile, servletContext, FileUtils.songAvatarPath, "songavatar");
     }
 
 

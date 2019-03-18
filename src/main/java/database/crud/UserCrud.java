@@ -244,7 +244,7 @@ public class UserCrud {
      * @return 文件路径
      */
     private static String saveUserAvatar(UploadFile img, ServletContext servletContext) {
-        return FileUtils.saveFile(img, servletContext, "upload\\avatar\\", "avatar");
+        return FileUtils.saveFile(img, servletContext, FileUtils.userAvatarPath, "avatar");
     }
 
     /**

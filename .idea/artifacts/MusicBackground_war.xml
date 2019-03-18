@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="MusicBackground:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/MusicBackground_war</output-path>
+    <root id="archive" name="MusicBackground_war.war">
+      <element id="artifact" artifact-name="MusicBackground:war exploded" />
+    </root>
+  </artifact>
+</component>

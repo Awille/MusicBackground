@@ -288,7 +288,7 @@ public class SongListCrud {
     }
 
     private static String saveSongListAvatar(UploadFile uploadFile, ServletContext context) {
-        return FileUtils.saveFile(uploadFile, context, "upload\\songListAvatar\\", "avatar");
+        return FileUtils.saveFile(uploadFile, context, FileUtils.songListAvatarPath, "avatar");
     }
 
     public static boolean updateSongListName(long songListId, String name, DruidPooledConnection connection) {

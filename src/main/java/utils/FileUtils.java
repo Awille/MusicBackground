@@ -10,6 +10,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class FileUtils {
+
+    public static String songPath = "upload" + File.separator + "song" + File.separator;
+
+    public static String lyricPath = "upload" + File.separator + "lyric" + File.separator;
+
+    public static String songAvatarPath = "upload" + File.separator + "songavatar" + File.separator;
+
+    public static String songListAvatarPath = "upload" + File.separator + "songlistavatar" + File.separator;
+
+    public static String userAvatarPath = "upload" + File.separator + "avatar" + File.separator;
+
+
+
     /**
      * 存储文件工具方法
      * @param uploadFile 上传你的文件类
