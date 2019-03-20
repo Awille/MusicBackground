@@ -191,6 +191,7 @@ public class UserCrud {
                 user.setSignature(resultSet.getString("signature"));
                 user.setAvatarUrl(resultSet.getString("avatar_url"));
                 user.setAccount(resultSet.getString("account"));
+                user.setPassword(resultSet.getString("password"));
             }
             resultSet.close();
         } catch (SQLException e) {
@@ -267,7 +268,7 @@ public class UserCrud {
 
     public static User userLogin(String account, String password, DruidPooledConnection connection) {
         User user = queryUserByAccount(account, connection);
-        if (user.getPassword().equals(password)) {
+        if (user != null && user.getPassword().equals(password)) {
             return user;
         } else {
             return null;

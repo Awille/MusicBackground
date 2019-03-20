@@ -167,9 +167,8 @@ public class UserTask implements Callable<Boolean> {
 
     private boolean userLogin(String data, DruidPooledConnection connection) throws IOException {
         JSONObject jsonObject = JSON.parseObject(data);
-        JSONObject second = JSON.parseObject(jsonObject.getString("data"));
-        String account = second.getString("account");
-        String password = second.getString("password");
+        String account = jsonObject.getString("account");
+        String password = jsonObject.getString("password");
         User user = UserCrud.userLogin(account, password, connection);
         if (user != null) {
             myOut.print(JSON.toJSON(new Message(CommonConstant.Result.SUCCESS_CODE, CommonConstant.Result.SUCCESS_MSG, user)));
