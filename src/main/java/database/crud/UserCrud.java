@@ -32,7 +32,7 @@ public class UserCrud {
                         Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, user.getAccount());
                 preparedStatement.setString(2, user.getNickName());
-                preparedStatement.setString(3, EncryptUtils.encryptByMd5(user.getPassword()));
+                preparedStatement.setString(3, user.getPassword());
                 preparedStatement.setInt(4, user.getGender());
                 preparedStatement.setString(5, user.getBirth());
                 preparedStatement.setString(6, user.getSignature());
@@ -112,7 +112,7 @@ public class UserCrud {
         try {
             preparedStatement = connection.prepareStatement(
                     "UPDATE music.user set password = ? WHERE account = ?");
-            preparedStatement.setString(1, EncryptUtils.encryptByMd5(user.getPassword()));
+            preparedStatement.setString(1, user.getPassword());
             preparedStatement.setString(2, user.getAccount());
             if (preparedStatement.executeUpdate() > 0) {
                 return true;
@@ -192,6 +192,7 @@ public class UserCrud {
                 user.setAvatarUrl(resultSet.getString("avatar_url"));
                 user.setAccount(resultSet.getString("account"));
                 user.setPassword(resultSet.getString("password"));
+                user.setUserId(resultSet.getLong("user_id"));
             }
             resultSet.close();
         } catch (SQLException e) {
