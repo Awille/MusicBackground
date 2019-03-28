@@ -39,7 +39,7 @@ public class SongCrud {
             preparedStatement.setString(5, song.getAvatarUrl());
             preparedStatement.setString(6, song.getResourceUrl());
             preparedStatement.setLong(7, song.getAuthor());
-            preparedStatement.setString(8, song.getAuthorName() == null ? "" : song.getAuthorName());
+            preparedStatement.setString(8, song.getAuthorAccount() == null ? "" : song.getAuthorAccount());
             if (preparedStatement.executeUpdate() > 0) {
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
                 //补充主键信息
@@ -80,7 +80,7 @@ public class SongCrud {
                 song.setName(resultSet.getString("name"));
                 song.setResourceUrl(resultSet.getString("resource_url"));
                 song.setAvatarUrl(resultSet.getString("avatar_url"));
-                song.setAuthorName(resultSet.getString("author_name"));
+                song.setAuthorAccount(resultSet.getString("author_account"));
                 songs.add(song);
             }
             resultSet.close();
@@ -121,7 +121,7 @@ public class SongCrud {
                 song.setResourceUrl(resultSet.getString("resource_url"));
                 song.setAvatarUrl(resultSet.getString("avatar_url"));
                 song.setAuthor(resultSet.getLong("author"));
-                song.setAuthorName(resultSet.getString("author_name"));
+                song.setAuthorAccount(resultSet.getString("author_account"));
             }
             resultSet.close();
         } catch (SQLException e) {
@@ -162,7 +162,7 @@ public class SongCrud {
                 song.setResourceUrl(resultSet.getString("resource_url"));
                 song.setAvatarUrl(resultSet.getString("avatar_url"));
                 song.setAuthor(resultSet.getLong("author"));
-                song.setAuthorName(resultSet.getString("author_name"));
+                song.setAuthorAccount(resultSet.getString("author_account"));
                 songs.add(song);
             }
             resultSet.close();
