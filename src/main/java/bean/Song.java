@@ -35,6 +35,10 @@ public class Song implements Serializable {
      * 作者
      */
     private long author;
+    /**
+     * 作者昵称
+     */
+    private String authorName;
 
     public long getSongId() {
         return songId;
@@ -98,5 +102,13 @@ public class Song implements Serializable {
 
     public void setAuthor(long author) {
         this.author = author;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 }

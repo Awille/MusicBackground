@@ -30,8 +30,8 @@ public class SongCrud {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(
-                    "INSERT INTO music.song (lyric_url, album_name, singer, name, avatar_url, resource_url, author) " +
-                            "VALUE (?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+                    "INSERT INTO music.song (lyric_url, album_name, singer, name, avatar_url, resource_url, author, author_name) " +
+                            "VALUE (?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, song.getLyricUrl() == null ? "" : song.getLyricUrl());
             preparedStatement.setString(2, song.getAlbumName() == null ? "无" : song.getAlbumName());
             preparedStatement.setString(3, song.getSinger() == null ? "佚名" : song.getSinger());
@@ -39,6 +39,7 @@ public class SongCrud {
             preparedStatement.setString(5, song.getAvatarUrl());
             preparedStatement.setString(6, song.getResourceUrl());
             preparedStatement.setLong(7, song.getAuthor());
+            preparedStatement.setString(8, song.getAuthorName() == null ? "" : song.getAuthorName());
             if (preparedStatement.executeUpdate() > 0) {
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
                 //补充主键信息
@@ -79,6 +80,7 @@ public class SongCrud {
                 song.setName(resultSet.getString("name"));
                 song.setResourceUrl(resultSet.getString("resource_url"));
                 song.setAvatarUrl(resultSet.getString("avatar_url"));
+                song.setAuthorName(resultSet.getString("author_name"));
                 songs.add(song);
             }
             resultSet.close();
@@ -119,6 +121,7 @@ public class SongCrud {
                 song.setResourceUrl(resultSet.getString("resource_url"));
                 song.setAvatarUrl(resultSet.getString("avatar_url"));
                 song.setAuthor(resultSet.getLong("author"));
+                song.setAuthorName(resultSet.getString("author_name"));
             }
             resultSet.close();
         } catch (SQLException e) {
@@ -159,6 +162,7 @@ public class SongCrud {
                 song.setResourceUrl(resultSet.getString("resource_url"));
                 song.setAvatarUrl(resultSet.getString("avatar_url"));
                 song.setAuthor(resultSet.getLong("author"));
+                song.setAuthorName(resultSet.getString("author_name"));
                 songs.add(song);
             }
             resultSet.close();
