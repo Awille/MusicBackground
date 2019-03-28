@@ -7,9 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="586bc6b8-a244-4cee-93ae-6a011261709a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MusicBackground_war/MusicBackground_war.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/Song.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/crud/SongCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/crud/SongCrud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/bean/Song.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/bean/Song.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/SongCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MusicBackground_war_exploded/WEB-INF/classes/database/crud/SongCrud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/Song.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Song.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/crud/SongCrud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/crud/SongCrud.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -60,7 +62,7 @@
     <session id="993071092">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="42" />
+          <entry key="project.closed" value="43" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="3" />
@@ -72,9 +74,9 @@
           <entry key="project.open.time.4" value="3" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="6" />
-          <entry key="project.open.time.8" value="9" />
+          <entry key="project.open.time.8" value="10" />
           <entry key="project.open.time.9" value="6" />
-          <entry key="project.opened" value="45" />
+          <entry key="project.opened" value="46" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -82,7 +84,7 @@
           <entry key="0-SNAPSHOT" value="1" />
           <entry key="class" value="12" />
           <entry key="iml" value="1" />
-          <entry key="java" value="170" />
+          <entry key="java" value="171" />
           <entry key="jsp" value="34" />
           <entry key="md" value="21" />
           <entry key="png" value="1" />
@@ -98,7 +100,7 @@
           <entry key="Database Element" value="1" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="170" />
+          <entry key="JAVA" value="171" />
           <entry key="JSP" value="34" />
           <entry key="Markdown" value="21" />
           <entry key="Properties" value="4" />
@@ -154,8 +156,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/UserTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2907">
-              <caret line="171" column="35" selection-start-line="171" selection-start-column="35" selection-end-line="171" selection-end-column="35" />
+            <state relative-caret-position="570">
+              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -163,10 +165,19 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/SongTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="159">
+              <caret line="90" column="20" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/UserCrud.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
+            <state relative-caret-position="3249">
               <caret line="185" column="35" selection-start-line="185" selection-start-column="35" selection-end-line="185" selection-end-column="35" />
             </state>
           </provider>
@@ -184,17 +195,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/CommentCrud.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="213" column="32" lean-forward="true" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/SongCrud.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1318">
-              <caret line="164" column="77" selection-start-line="164" selection-start-column="77" selection-end-line="164" selection-end-column="77" />
+            <state relative-caret-position="269">
+              <caret line="171" lean-forward="true" selection-start-line="171" selection-end-line="171" />
             </state>
           </provider>
         </entry>
@@ -572,6 +574,13 @@
               <item name="MusicBackground" type="462c0819:PsiDirectoryNode" />
               <item name="out" type="462c0819:PsiDirectoryNode" />
               <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="MusicBackground_war" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MusicBackground" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MusicBackground" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
               <item name="MusicBackground_war_exploded" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -699,16 +708,16 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="SearchEverywhereHistoryKey" value="songC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongCrud.java&#10;song&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/bean/Song.java&#10;songc&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongCrud.java&#10;userT&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/UserTask.java&#10;songli&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/SongListTask.java&#10;songl&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/SongListTask.java&#10;songlist&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongListCrud.java&#10;usertask&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/UserTask.java&#10;userC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/UserCrud.java&#10;user&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/UserTask.java&#10;pom&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/pom.xml&#10;UserC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/UserCrud.java&#10;UserT&#9;PSI&#9;JAVA://utils.UserTask&#10;File&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/FileUtils.java&#10;UserCr&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/UserCrud.java&#10;Song&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/bean/Song.java&#10;reque&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/RequestProcessUtils.java&#10;SongC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongCrud.java&#10;SongListC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongListCrud.java" />
+    <property name="SearchEverywhereHistoryKey" value="songCru&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongCrud.java&#10;songT&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/SongTask.java&#10;SongTas&#9;PSI&#9;JAVA://utils.SongTask&#10;songtask&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/SongTask.java&#10;songTa&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/SongTask.java&#10;userT&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/UserTask.java&#10;songC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongCrud.java&#10;song&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/bean/Song.java&#10;songc&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongCrud.java&#10;songli&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/SongListTask.java&#10;songl&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/SongListTask.java&#10;songlist&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongListCrud.java&#10;usertask&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/UserTask.java&#10;userC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/UserCrud.java&#10;user&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/UserTask.java&#10;pom&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/pom.xml&#10;UserC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/UserCrud.java&#10;UserT&#9;PSI&#9;JAVA://utils.UserTask&#10;File&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/FileUtils.java&#10;UserCr&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/UserCrud.java&#10;Song&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/bean/Song.java&#10;reque&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/utils/RequestProcessUtils.java&#10;SongC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongCrud.java&#10;SongListC&#9;FILE&#9;file://D:/IdeaProjects/MusicBackground/src/main/java/database/crud/SongListCrud.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553743835541" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553757891462" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -903,12 +912,13 @@
       <workItem from="1553579612254" duration="1325000" />
       <workItem from="1553605643054" duration="703000" />
       <workItem from="1553689967294" duration="2298000" />
-      <workItem from="1553742699095" duration="1160000" />
+      <workItem from="1553742699095" duration="4972000" />
+      <workItem from="1553774550008" duration="1054000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225390000" />
+    <option name="totallyTimeSpent" value="230256000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -924,7 +934,7 @@
     <editor active="true" />
     <layout>
       <window_info anchor="top" id="Structure" order="0" sideWeight="0.5023585" weight="0.2631579" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.40683645" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.4121984" />
       <window_info id="Web" order="1" side_tool="true" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -940,7 +950,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" weight="0.3286119" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.2251462" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.2251462" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.3286119" />
       <window_info anchor="bottom" id="Application Servers" order="12" weight="0.3286119" />
@@ -1209,13 +1219,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/SongTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="93" column="17" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/FileUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
@@ -1265,6 +1268,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bean/Song.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="106" column="38" selection-start-line="106" selection-start-column="38" selection-end-line="106" selection-end-column="38" />
+          <folding>
+            <element signature="e#1866#1867#0" expanded="true" />
+            <element signature="e#1924#1925#0" expanded="true" />
+            <element signature="e#1974#1975#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/SongCrud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="251" column="31" lean-forward="true" selection-start-line="251" selection-start-column="31" selection-end-line="251" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/SongListCrud.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -1281,11 +1303,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/UserTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2907">
-          <caret line="171" column="35" selection-start-line="171" selection-start-column="35" selection-end-line="171" selection-end-column="35" />
+        <state relative-caret-position="570">
+          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/UserCrud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3249">
+          <caret line="185" column="35" selection-start-line="185" selection-start-column="35" selection-end-line="185" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1313,36 +1342,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/UserCrud.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="185" column="35" selection-start-line="185" selection-start-column="35" selection-end-line="185" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bean/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="106" column="38" selection-start-line="106" selection-start-column="38" selection-end-line="106" selection-end-column="38" />
-          <folding>
-            <element signature="e#1866#1867#0" expanded="true" />
-            <element signature="e#1924#1925#0" expanded="true" />
-            <element signature="e#1974#1975#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/CommentCrud.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="213" column="32" lean-forward="true" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
+        <state relative-caret-position="269">
+          <caret line="171" lean-forward="true" selection-start-line="171" selection-end-line="171" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/crud/SongCrud.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/SongTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1318">
-          <caret line="164" column="77" selection-start-line="164" selection-start-column="77" selection-end-line="164" selection-end-column="77" />
+        <state relative-caret-position="159">
+          <caret line="90" column="20" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
         </state>
       </provider>
     </entry>

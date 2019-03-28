@@ -30,7 +30,7 @@ public class SongCrud {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(
-                    "INSERT INTO music.song (lyric_url, album_name, singer, name, avatar_url, resource_url, author, author_name) " +
+                    "INSERT INTO music.song (lyric_url, album_name, singer, name, avatar_url, resource_url, author, author_account) " +
                             "VALUE (?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, song.getLyricUrl() == null ? "" : song.getLyricUrl());
             preparedStatement.setString(2, song.getAlbumName() == null ? "无" : song.getAlbumName());
