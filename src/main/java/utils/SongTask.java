@@ -134,12 +134,12 @@ public class SongTask implements Callable<Boolean> {
     private boolean uloadSongAvatar(String data, DruidPooledConnection connection) throws IOException {
         JSONObject jsonObject = JSON.parseObject(data);
         UploadFile uploadFile = JSON.parseObject(jsonObject.get("uploadFile").toString(), UploadFile.class);
-        String fileUrl = SongCrud.saveSongAvatar(uploadFile, myContext);
-        if (fileUrl != null) {
+        boolean result = SongCrud.uploadSongAvatar(uploadFile, myContext, connection);
+        if (result) {
             myOut.print(JSON.toJSON(new Message(
                     CommonConstant.Result.SUCCESS_CODE,
                     CommonConstant.Result.SUCCESS_MSG,
-                    fileUrl)));
+                    null)));
             return true;
         } else {
             myOut.print(JSON.toJSON(new Message(
@@ -154,12 +154,12 @@ public class SongTask implements Callable<Boolean> {
     private boolean uploadSongResource(String data, DruidPooledConnection connection) throws IOException {
         JSONObject jsonObject = JSON.parseObject(data);
         UploadFile uploadFile = JSON.parseObject(jsonObject.get("uploadFile").toString(), UploadFile.class);
-        String fileUrl = SongCrud.saveSongResource(uploadFile, myContext);
-        if (fileUrl != null) {
+        boolean result = SongCrud.uploadSongResource(uploadFile, myContext, connection);
+        if (result) {
             myOut.print(JSON.toJSON(new Message(
                     CommonConstant.Result.SUCCESS_CODE,
                     CommonConstant.Result.SUCCESS_MSG,
-                    fileUrl)));
+                    null)));
             return true;
         } else {
             myOut.print(JSON.toJSON(new Message(

@@ -242,6 +242,77 @@ public class SongCrud {
         return false;
     }
 
+    //account中传入songId
+    public static boolean uploadSongAvatar(UploadFile uploadFile, ServletContext servletContext, DruidPooledConnection connection) {
+        long songId = Long.valueOf(uploadFile.getAccount());
+        String fileStr = saveSongAvatar(uploadFile, servletContext);
+        boolean result = false;
+        if (fileStr != null) {
+            result = changeSongAvatarUrl(songId, fileStr, connection);
+        }
+        return result;
+    }
+
+    public static boolean uploadSongResource(UploadFile uploadFile, ServletContext servletContext, DruidPooledConnection connection) {
+        long songId = Long.valueOf(uploadFile.getAccount());
+        String resourceUrl = saveSongResource(uploadFile, servletContext);
+        boolean result = false;
+        if (resourceUrl != null) {
+            result = changeSongResourceUrl(songId, resourceUrl, connection);
+        }
+        return result;
+    }
+
+
+    public static boolean changeSongAvatarUrl(long songId, String fileStr, DruidPooledConnection connection) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement("UPDATE music.song SET avatar_url = ? " +
+                    "where song_id = ?");
+            preparedStatement.setString(1, fileStr);
+            preparedStatement.setLong(2, songId);
+            if (preparedStatement.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean changeSongResourceUrl(long songId, String resourceUrl, DruidPooledConnection connection) {
+        PreparedStatement preparedStatement = null;
+        try {
+            //sql语句
+            preparedStatement = connection.prepareStatement("UPDATE music.song SET resource_url = ? " +
+                    "where song_id = ?");
+            preparedStatement.setString(1, resourceUrl);
+            preparedStatement.setLong(2, songId);
+            if (preparedStatement.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+
     /**
      * 存储歌曲文件
      * @param uploadFile
