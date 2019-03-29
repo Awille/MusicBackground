@@ -71,7 +71,7 @@ public class SongTask implements Callable<Boolean> {
                     result = addSong(data, connection);
                     break;
                 case "204":
-                    result = uloadSongAvatar(data, connection);
+                    result = uploadSongAvatar(data, connection);
                     break;
             }
             return result;
@@ -131,7 +131,7 @@ public class SongTask implements Callable<Boolean> {
         }
     }
 
-    private boolean uloadSongAvatar(String data, DruidPooledConnection connection) throws IOException {
+    private boolean uploadSongAvatar(String data, DruidPooledConnection connection) throws IOException {
         JSONObject jsonObject = JSON.parseObject(data);
         UploadFile uploadFile = JSON.parseObject(jsonObject.get("uploadFile").toString(), UploadFile.class);
         boolean result = SongCrud.uploadSongAvatar(uploadFile, myContext, connection);
