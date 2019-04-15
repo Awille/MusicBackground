@@ -174,6 +174,7 @@ public class SongTask implements Callable<Boolean> {
         String songIdStr = myRequest.getParameter("songId");
         String word = myRequest.getParameter("word");
         String authorStr = myRequest.getParameter("author");
+        String random = myRequest.getParameter("random");
         if (songIdStr != null) {
             long songId = 0;
             boolean flag = true;
@@ -272,6 +273,28 @@ public class SongTask implements Callable<Boolean> {
                     myOut.print(JSON.toJSON(new Message(
                             CommonConstant.Result.FAIL_CODE,
                             "查询上传歌曲失败",
+                            null)));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if (random != null) {
+            Song song = SongCrud.getRandomSong(connection);
+            if (song != null) {
+                try {
+                    myOut.print(JSON.toJSON(new Message(
+                            CommonConstant.Result.SUCCESS_CODE,
+                            CommonConstant.Result.SUCCESS_MSG,
+                            song)));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return true;
+            } else {
+                try {
+                    myOut.print(JSON.toJSON(new Message(
+                            CommonConstant.Result.FAIL_CODE,
+                            "获取随机歌曲失败",
                             null)));
                 } catch (IOException e) {
                     e.printStackTrace();

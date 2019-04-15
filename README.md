@@ -58,7 +58,7 @@ service 104 密码验证 data传入account与password
 
 #### 4.2 SONG 设计
 - 查询歌曲信息 : GET方法 根据songId或者 
-word关键词 或者author 进行查询
+word关键词 或者author 进行查询 或者random
 word进行模糊查询 三个key不能同时为非null，查询时以非null
 的key决定查询方式
 

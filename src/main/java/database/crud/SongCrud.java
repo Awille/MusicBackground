@@ -112,16 +112,7 @@ public class SongCrud {
             preparedStatement.setLong(1, songId);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                song = new Song();
-                song.setSongId(resultSet.getLong("song_id"));
-                song.setLyricUrl(resultSet.getString("lyric_url"));
-                song.setAlbumName(resultSet.getString("album_name"));
-                song.setSinger(resultSet.getString("singer"));
-                song.setName(resultSet.getString("name"));
-                song.setResourceUrl(resultSet.getString("resource_url"));
-                song.setAvatarUrl(resultSet.getString("avatar_url"));
-                song.setAuthor(resultSet.getLong("author"));
-                song.setAuthorAccount(resultSet.getString("author_account"));
+                song =sqlToSong(resultSet);
             }
             resultSet.close();
         } catch (SQLException e) {
@@ -133,6 +124,40 @@ public class SongCrud {
                 e.printStackTrace();
             }
         }
+        return song;
+    }
+
+    public static Song getRandomSong(DruidPooledConnection connection) {
+        Song song = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM music.song WHERE song_id >= " +
+                            "((SELECT MAX(song_id) FROM song) - (SELECT MIN(song_id) FROM song)) * RAND() " +
+                            "+ (SELECT MIN(song_id) FROM song) LIMIT 1" );
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                song = sqlToSong(resultSet);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return song;
+    }
+
+
+    private static Song sqlToSong(ResultSet resultSet) throws SQLException {
+        Song song = new Song();
+        song.setSongId(resultSet.getLong("song_id"));
+        song.setLyricUrl(resultSet.getString("lyric_url"));
+        song.setAlbumName(resultSet.getString("album_name"));
+        song.setSinger(resultSet.getString("singer"));
+        song.setName(resultSet.getString("name"));
+        song.setResourceUrl(resultSet.getString("resource_url"));
+        song.setAvatarUrl(resultSet.getString("avatar_url"));
+        song.setAuthor(resultSet.getLong("author"));
+        song.setAuthorAccount(resultSet.getString("author_account"));
         return song;
     }
 
