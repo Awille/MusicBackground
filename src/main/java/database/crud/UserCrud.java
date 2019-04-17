@@ -184,15 +184,44 @@ public class UserCrud {
             preparedStatement.setString(1, account);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                user = new User();
-                user.setNickName(resultSet.getString("nick_name"));
-                user.setGender(resultSet.getInt("gender"));
-                user.setBirth(resultSet.getString("birth"));
-                user.setSignature(resultSet.getString("signature"));
-                user.setAvatarUrl(resultSet.getString("avatar_url"));
-                user.setAccount(resultSet.getString("account"));
-                user.setPassword(resultSet.getString("password"));
-                user.setUserId(resultSet.getLong("user_id"));
+                user = toUserFromResultSet(resultSet);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return user;
+    }
+
+    private static User toUserFromResultSet(ResultSet resultSet) throws SQLException {
+        User user = new User();
+        user.setNickName(resultSet.getString("nick_name"));
+        user.setGender(resultSet.getInt("gender"));
+        user.setBirth(resultSet.getString("birth"));
+        user.setSignature(resultSet.getString("signature"));
+        user.setAvatarUrl(resultSet.getString("avatar_url"));
+        user.setAccount(resultSet.getString("account"));
+        user.setPassword(resultSet.getString("password"));
+        user.setUserId(resultSet.getLong("user_id"));
+        return user;
+    }
+
+    public static User queryUserByUserId(long userId, DruidPooledConnection connection) {
+        User user = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM music.user WHERE  user_id = ?");
+            preparedStatement.setLong(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                user = toUserFromResultSet(resultSet);
             }
             resultSet.close();
         } catch (SQLException e) {

@@ -49,6 +49,8 @@ public class Comment implements Serializable {
      */
     private Comment replyComment;
 
+    private User user;
+
     public long getCommentId() {
         return commentId;
     }
@@ -135,5 +137,13 @@ public class Comment implements Serializable {
 
     public void setReplyComment(Comment replyComment) {
         this.replyComment = replyComment;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

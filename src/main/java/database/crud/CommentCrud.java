@@ -2,6 +2,7 @@ package database.crud;
 
 
 import bean.Comment;
+import bean.User;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import database.DbConnectManager;
 
@@ -39,6 +40,7 @@ public class CommentCrud {
                 if (resultSet.next()) {
                     comment.setCommentId(resultSet.getLong(1));
                 }
+                comment.setUser(UserCrud.queryUserByUserId(comment.getUserId(), connection));
                 resultSet.close();
                 return comment;
             } else {
@@ -112,7 +114,7 @@ public class CommentCrud {
                 comment.setDislike(resultSet.getLong("dislike"));
                 comment.setReplyCommentId(resultSet.getLong("reply_comment_id"));
                 comment.setReplyAmount(resultSet.getLong("reply_amount"));
-
+                comment.setUser(UserCrud.queryUserByUserId(comment.getUserId(), connection));
                 comments.add(comment);
             }
             resultSet.close();
@@ -155,6 +157,7 @@ public class CommentCrud {
                 comment.setDislike(resultSet.getLong("dislike"));
                 comment.setReplyCommentId(resultSet.getLong("reply_comment_id"));
                 comment.setReplyAmount(resultSet.getLong("reply_amount"));
+                comment.setUser(UserCrud.queryUserByUserId(comment.getUserId(), connection));
             }
             resultSet.close();
         } catch (SQLException e) {
@@ -196,6 +199,7 @@ public class CommentCrud {
                 comment.setDislike(resultSet.getLong("dislike"));
                 comment.setReplyCommentId(resultSet.getLong("reply_comment_id"));
                 comment.setReplyAmount(resultSet.getLong("reply_amount"));
+                comment.setUser(UserCrud.queryUserByUserId(comment.getUserId(), connection));
                 //此条评论下还有评论
                 if (comment.getReplyCommentId() != 0) {
                     Comment commentInComment = queryCommentByCommentId(comment.getReplyCommentId(), connection);
